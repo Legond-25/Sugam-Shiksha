@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
-// Requiring DB
-// const conn = require('./models/server');
-
 // Creating user schema
 const userSchema = new mongoose.Schema(
   {
@@ -26,6 +23,18 @@ const userSchema = new mongoose.Schema(
       required: ['true', 'Please provide a email address'],
       validate: [validator.isEmail, 'Please provide a valid email address'],
     },
+    mobile: {
+      type: Number,
+      trim: true,
+      unique: true,
+      required: [true, 'Please provide a mobile number'],
+      validate: {
+        validator: function () {
+          return validator.isMobilePhone(this.mobile.toString(), 'en-IN');
+        },
+        meassge: 'Please provide a valid mobile number',
+      },
+    },
     userType: {
       type: String,
       enum: {
@@ -40,6 +49,7 @@ const userSchema = new mongoose.Schema(
         ],
         message: '{VALUE} is not supported',
       },
+      required: [true, 'Please provide a user type'],
     },
     photo: {
       type: String,
@@ -70,7 +80,7 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
   },
-  { toJSON: { virtuals: true }, toObject: { virtuals: true }, timestamps: true }
+  { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
 // Document middleware - Pre hook
@@ -134,7 +144,7 @@ userSchema.methods.createPasswordResetToken = function () {
   return resetToken;
 };
 
-// Creating User model
+// Creating user Model
 const User = mongoose.model('User', userSchema);
 
 // Exporting User Model
