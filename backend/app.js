@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser');
 
 // Requiring modules
 const User = require('./models/primary schema/userModel');
-const dbRead = require('./DB/index').getModels();
+const Student = require('./models/primary schema/studentModel');
 
 // Create express app
 const app = express();
@@ -26,40 +26,31 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/primary', async (req, res) => {
-  try {
-    // const user = await User.create(req.body);
-    const user = await User.create(req.body);
+// Testing routes
+app.post('/user', async (req, res) => {
+  const user = await User.create(req.body);
 
-    if (!user) {
-      throw new Error('User not created');
-    }
-
-    res.status(200).json({
-      status: 'success',
-      user,
-    });
-  } catch (e) {
-    console.log(e.message);
+  if (!user) {
+    console.log('User not created');
   }
+
+  res.status(200).json({
+    status: 'success',
+    user,
+  });
 });
 
-app.post('/secondary', async (req, res) => {
-  try {
-    // const user = await User.create(req.body);
-    const university = await dbRead['University'].create(req.body);
+app.post('/student', async (req, res) => {
+  const student = await Student.create(req.body);
 
-    if (!university) {
-      throw new Error('University not created');
-    }
-
-    res.status(200).json({
-      status: 'success',
-      university,
-    });
-  } catch (e) {
-    console.log(e.message);
+  if (!student) {
+    console.log('Student not created');
   }
+
+  res.status(200).json({
+    status: 'success',
+    student,
+  });
 });
 
 // Export app

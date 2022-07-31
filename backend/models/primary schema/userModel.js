@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
         meassge: 'Please provide a valid mobile number',
       },
     },
-    userType: {
+    user: {
       type: String,
       enum: {
         values: [
@@ -47,7 +47,7 @@ const userSchema = new mongoose.Schema(
           'academic_professional',
           'admin',
         ],
-        message: '{VALUE} is not supported',
+        message: 'The value {VALUE} is not supported',
       },
       required: [true, 'Please provide a user type'],
     },

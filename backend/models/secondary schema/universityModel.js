@@ -20,7 +20,7 @@ const universitySchema = new mongoose.Schema(
           'Deemed University',
           'Institutes Under National Importance',
         ],
-        message: '{VALUE} is not supported',
+        message: 'The value {VALUE} is not supported',
       },
     },
     universityCode: {
