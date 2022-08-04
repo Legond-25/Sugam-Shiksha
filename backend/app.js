@@ -3,8 +3,8 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 
 // Requiring modules
-const User = require('./models/primary schema/userModel');
-const Student = require('./models/primary schema/studentModel');
+const userRoutes = require('./routes/userRoutes');
+const studentRoutes = require('./routes/studentRoutes');
 
 // Create express app
 const app = express();
@@ -26,32 +26,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Testing routes
-app.post('/user', async (req, res) => {
-  const user = await User.create(req.body);
+//API Routes
 
-  if (!user) {
-    console.log('User not created');
-  }
-
-  res.status(200).json({
-    status: 'success',
-    user,
-  });
-});
-
-app.post('/student', async (req, res) => {
-  const student = await Student.create(req.body);
-
-  if (!student) {
-    console.log('Student not created');
-  }
-
-  res.status(200).json({
-    status: 'success',
-    student,
-  });
-});
+app.use('/api/v1/auth',userRoutes);
+app.use('/api/v1/student',studentRoutes);
 
 // Export app
 module.exports = app;
