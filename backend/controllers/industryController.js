@@ -1,4 +1,5 @@
 const Industry = require("./../models/primary schema/industryModel");
+const catchAsync = require('../utils/catchAsync');
 const factory = require("./handlerFactory");
 
 exports.getMe = (req, res, next) => {

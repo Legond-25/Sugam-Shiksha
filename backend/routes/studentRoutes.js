@@ -8,7 +8,7 @@ router.
     .get(studentController.getAllStudents)
     .post(studentController.createStudent);
 
-router.get('/me', studentController.getMe, studentController.getMe);
+router.get('/me', studentController.getMe);
 
 router.delete('/deleteMe', studentController.deleteMe)
 
