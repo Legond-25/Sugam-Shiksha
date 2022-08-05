@@ -1,5 +1,6 @@
 const Institute = require("./../models/primary schema/instituteModel");
-const catchAsync = require('../utils/catchAsync');
+const AppError = require("./../utils/appError");
+const catchAsync = require("./../utils/catchAsync");
 const factory = require("./handlerFactory");
 
 exports.getMe = (req, res, next) => {
