@@ -1,0 +1,44 @@
+.nav {
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo > img {
+        height: 5rem;
+        cursor: pointer;
+    }
+
+    &__logo-img:not(:last-child) {
+        padding-right: 1rem;
+    }
+
+    &__links {
+        list-style: none;
+
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__link {
+        background-color: transparent;
+        border: none;
+        font-size: 1.8rem;
+        font-weight: 500;
+        font-family: inherit;
+        color: $color-grey-dark-3;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    &__cta {
+        text-align: center;
+    }
+
+    &__login-btn {
+        margin-right: 2rem;
+        background: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+    }
+}

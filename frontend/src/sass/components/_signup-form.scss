@@ -1,0 +1,102 @@
+.signup {
+    height: 100vh;
+    position: relative;
+    background-image: url('./../assets/images/signup-1.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 50%;
+    overflow: hidden;
+
+    &__box {
+        position: absolute;
+        top: 0%;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: $color-white;
+        z-index: -1;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    &--btn {
+        background: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+        padding: 1.2rem 3.5rem;
+        border-radius: 200px;
+        font-weight: 500;
+        color: $color-white;
+        margin-top: 3rem;
+    }
+}
+
+.signup__form {
+    width: 45%;
+    height: 45rem;
+    padding: 3rem 10rem;
+    padding-left: 6rem;
+    border-radius: 5rem;
+    background-color: rgba($color-grey-light-2,0.5);
+    margin-right: -5rem;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+    
+    position: absolute;
+    top: 20%;
+    right: 0;
+
+    &--header {
+        text-align: center;
+        font-size: 3.5rem;
+        padding-bottom: 5rem;
+        letter-spacing: 1px;
+        font-weight: 600;
+        
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    &--group {
+        padding-bottom: 1.8rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &--icon {
+        padding-right: 1rem;
+        cursor: pointer;
+        font-size: 2.5rem;
+        color: $color-grey-dark-3;
+    }
+
+    &--eye-icon {
+        font-size: 2rem;
+        display: inline-block;
+        margin-left: -4rem;
+        margin-right: 2rem;
+        cursor: pointer;
+        color: $color-grey-dark-3;
+    }
+
+    &--footer {
+        text-align: center;
+
+        & > p {
+            text-align: left;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding-left: 4rem;
+
+            & > a {
+                font-size: 1.5rem;
+                text-decoration: none;
+                font-weight: 700;
+                color: $color-secondary;
+            }
+        }
+    }
+}
