@@ -6,7 +6,7 @@ dotenv.config({ path: "./.env" });
 class SendEmail {
   constructor(user, url, message) {
     this.to = user.email;
-    this.firstName = user.name.split(" ")[0];
+    this.firstName = user.firstName;
     this.url = url;
     this.message = message;
     this.from = `Sugam Shiksha <${process.env.EMAIL}>`;
@@ -17,7 +17,7 @@ class SendEmail {
     return sgMail.setApiKey(sgMailApiKey);
   }
 
-  async send(template, subject) {
+  async send(subject) {
     const mailOptions = {
       from: process.env.EMAIL,
       to: this.to,
@@ -35,10 +35,7 @@ class SendEmail {
     await this.send("welcome", "Welcome to Canteen!");
   }
   async sendPasswordReset() {
-    await this.send(
-      "passwordReset",
-      "Your password reset token (valid for only 10 mins)."
-    );
+    await this.send("Your password reset token (valid for only 10 mins).");
   }
 }
 
