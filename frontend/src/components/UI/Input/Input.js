@@ -22,6 +22,7 @@ const Input = React.forwardRef((props, ref) => {
         id={props.id}
         value={props.value}
         placeholder={props.placeholder}
+        required
         onChange={props.onChange}
         onBlur={props.onBlur}
         className={`control ${props.isValid === false ? 'invalid' : ''}`}

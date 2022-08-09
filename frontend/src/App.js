@@ -4,8 +4,8 @@ import Signup from './components/Signup-Login/Signup';
 import Login from './components/Signup-Login/Login';
 
 function App() {
-  // return <Signup />;
-  return <Login />;
+  return <Signup />;
+  // return <Login />;
 }
 
 export default App;

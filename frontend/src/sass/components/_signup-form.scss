@@ -29,13 +29,13 @@
         border-radius: 200px;
         font-weight: 500;
         color: $color-white;
-        margin-top: 3rem;
+        margin-top: 4rem;
     }
 }
 
 .signup__form {
     width: 45%;
-    height: 45rem;
+    height: 50rem;
     padding: 3rem 10rem;
     padding-left: 6rem;
     border-radius: 5rem;
@@ -97,6 +97,18 @@
                 font-weight: 700;
                 color: $color-secondary;
             }
+        }
+    }
+
+    &--error {
+        font-size: 1.3rem;
+        padding-top: 2rem;
+        padding-left: 4rem;
+        color: #d00000;
+        transition: all 0.2s;
+
+        & > i {
+            padding-right: 1rem;
         }
     }
 }

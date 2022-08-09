@@ -227,7 +227,8 @@ body {
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.5s; }
+  transition: all 0.5s;
+  pointer-events: none; }
   .modal__footer {
     text-align: right; }
   .modal__btn {
@@ -264,6 +265,9 @@ body {
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent; }
+      .modal__header--heading > i {
+        font-size: 2.5rem;
+        padding-right: 1rem; }
     .modal__header--text {
       padding-top: 1rem;
       font-size: 1.3rem;
@@ -281,16 +285,31 @@ body {
     font-size: 1.3rem;
     padding-bottom: 2rem;
     padding-left: 4rem;
-    color: #d00000;
+    color: #eb4d4b;
     transition: all 0.2s; }
     .modal__form--error > i {
       padding-right: 1rem; }
-  .modal:target {
+  .modal__form--success {
+    font-size: 1.3rem;
+    padding-bottom: 2rem;
+    padding-left: 4rem;
+    color: #20bf6b;
+    transition: all 0.2s; }
+    .modal__form--success > i {
+      padding-right: 1rem; }
+  .modal.enter-done {
     opacity: 1;
-    visibility: visible; }
-  .modal:target .modal__content {
+    visibility: visible;
+    pointer-events: visible; }
+  .modal.enter-done .modal__content {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1); }
+  .modal.exit {
+    opacity: 0;
+    visibility: hidden; }
+  .modal.exit .modal__content {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25); }
   .modal__close:link, .modal__close:visited {
     color: #777;
     font-size: 3rem;
@@ -355,11 +374,11 @@ body {
     border-radius: 200px;
     font-weight: 500;
     color: #fff;
-    margin-top: 3rem; }
+    margin-top: 4rem; }
 
 .signup__form {
   width: 45%;
-  height: 45rem;
+  height: 50rem;
   padding: 3rem 10rem;
   padding-left: 6rem;
   border-radius: 5rem;
@@ -407,3 +426,11 @@ body {
         text-decoration: none;
         font-weight: 700;
         color: #33479d; }
+  .signup__form--error {
+    font-size: 1.3rem;
+    padding-top: 2rem;
+    padding-left: 4rem;
+    color: #d00000;
+    transition: all 0.2s; }
+    .signup__form--error > i {
+      padding-right: 1rem; }

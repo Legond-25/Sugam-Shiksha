@@ -24,18 +24,6 @@ const userSchema = new mongoose.Schema(
       required: ['true', 'Please provide a email address'],
       validate: [validator.isEmail, 'Please provide a valid email address'],
     },
-    mobile: {
-      type: Number,
-      trim: true,
-      unique: true,
-      required: [true, 'Please provide a mobile number'],
-      validate: {
-        validator: function () {
-          return validator.isMobilePhone(this.mobile.toString(), 'en-IN');
-        },
-        meassge: 'Please provide a valid mobile number',
-      },
-    },
     user: {
       type: String,
       enum: {

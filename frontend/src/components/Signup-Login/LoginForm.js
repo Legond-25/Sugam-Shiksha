@@ -10,7 +10,8 @@ import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
 import Input from './../UI/Input/Input';
-import Modal from '../UI/Modal/Modal';
+import ForgotPassword from './ForgotPassword';
+import OtpModal from './OtpModal';
 
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
@@ -34,6 +35,8 @@ const passwordReducer = (state, action) => {
 
 const LoginForm = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
+  const [showForgot, setShowForgot] = useState(false);
+  const [showOtp, setShowOtp] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
@@ -126,9 +129,15 @@ const LoginForm = (props) => {
     [emailIsValid, emailState.value, formIsValid, passwordState.value]
   );
 
-  useEffect(() => {
-    submitHandler();
-  }, [submitHandler]);
+  const showForgotModalHandler = (event) => {
+    event.preventDefault();
+    setShowForgot(true);
+  };
+
+  const showOtpModalHandler = (event) => {
+    event.preventDefault();
+    setShowOtp(true);
+  };
 
   return (
     <>
@@ -192,7 +201,9 @@ const LoginForm = (props) => {
             Don't have an account? <button type="button">Signup</button>
           </p>
           <p>
-            <a href="#modal">Forgot Password?</a>
+            <a href="#modal" onClick={showForgotModalHandler}>
+              Forgot Password?
+            </a>
           </p>
           <button className="login--btn btn" type="submit">
             Submit
@@ -202,17 +213,17 @@ const LoginForm = (props) => {
             <a href="#google">
               <i className="fa-brands fa-google"></i>
             </a>
-            <a href="#email">
+            <a href="#modal" onClick={showOtpModalHandler}>
               <i className="fa-solid fa-envelope"></i>
             </a>
           </div>
         </div>
       </form>
-      <Modal
-        header="Forgot Password?"
-        url="http://localhost:8080/api/v1/auth/forgotPassword"
-        text="Enter your email and we will send you a link to get back to your account"
+      <ForgotPassword
+        onShow={showForgot}
+        onClose={() => setShowForgot(false)}
       />
+      <OtpModal onShow={showOtp} onClose={() => setShowOtp(false)} />
     </>
   );
 };
