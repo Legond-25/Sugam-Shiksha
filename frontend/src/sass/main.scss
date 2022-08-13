@@ -8,8 +8,15 @@
 @import "base/utilities";
 
 @import "components/btn";
+@import "components/card";
+@import "components/category";
 @import "components/input";
 @import "components/login-form";
 @import "components/modal";
-@import "components/navigation";
 @import "components/signup-form";
+
+@import "layouts/dashboard-nav";
+@import "layouts/navigation";
+@import "layouts/sidebar";
+
+@import "pages/studentDashboard";

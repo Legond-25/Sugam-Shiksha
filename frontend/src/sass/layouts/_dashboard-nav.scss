@@ -1,0 +1,109 @@
+.dashboard-nav {
+    width: 100%;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba($color-grey-light-3, 0.9);
+    z-index: 100000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    backdrop-filter: blur(2px);
+
+    &__logo {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        &-img {
+            height: 5rem;
+            cursor: pointer;
+        }
+    }
+
+    &__text {
+        padding-left: 3rem;
+        font-size: 3rem;
+        font-weight: 500;
+    }
+
+    &__user {
+        position: relative;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+
+    &__name {
+        font-size: 2rem;
+        padding-right: 2rem;
+        transform: translateX(7rem);
+        opacity: 0;
+        transition: all 0.2s;
+    }
+
+    &__list {
+        height: 0;
+        transition: all 0.4s;
+        border-radius: 5px;
+        padding-top: 2rem;
+        background-color: rgba($color-grey-light-3, 0.9);
+        list-style: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+    }
+
+    &__item {
+        font-size: 1.8rem;
+        padding: 1.2rem 3rem;
+        background-color: transparent;
+        transition: all 0.3s;
+        opacity: 0;
+        visibility: hidden;
+
+        &:hover {
+            background-color: rgba($color-grey-dark, 0.1);
+        }
+    }
+
+    &__link:link,
+    &__link:visited {
+        color: $color-grey-dark-3;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    &__icon {
+        z-index: 10;
+    }
+
+    &__icon > img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        outline-offset: 3px;
+        outline: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &:hover {
+            outline: 2px solid rgba($color-secondary-light, 0.5);
+        }
+    }
+
+    &__icon:hover ~ &__name {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    &__input:checked ~ &__list {
+        height: max-content;
+    }
+    &__input:checked ~ &__list > &__item {
+        opacity: 1;
+        visibility: visible;
+    }
+}

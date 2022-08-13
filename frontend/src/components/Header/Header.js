@@ -1,33 +1,59 @@
 import logo_1 from './../../assets/images/logo_1.png';
 import logo_2 from './../../assets/images/logo_2.png';
 
+const BtnClickNavigation = (event) => {
+  if (!event.target.checked) {
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  }
+};
+
 const Header = (props) => {
   return (
-    <div className="nav">
-      <div className="nav__logo">
-        <img src={logo_1} alt="Logo 1" className="nav__logo-img"></img>
-        <img src={logo_2} alt="Logo 2" className="nav__logo-img"></img>
+    <div className="navigation">
+      <div className="navigation__logo">
+        <img src={logo_1} alt="Logo 1" className="navigation__logo-img"></img>
+        <img src={logo_2} alt="Logo 2" className="navigation__logo-img"></img>
       </div>
-      <ul className="nav__links">
-        <li className="nav__item">
-          <button className="nav__link">Home</button>
-        </li>
-        <li className="nav__item">
-          <button className="nav__link">About Us</button>
-        </li>
-        <li className="nav__item">
-          <button className="nav__link">Pricing</button>
-        </li>
-        <li className="nav__item">
-          <button className="nav__link">Features</button>
-        </li>
-        <li className="nav__item">
-          <button className="nav__link">Contact</button>
-        </li>
-      </ul>
-      <div className="nav__cta">
-        <button className="nav__login-btn btn">Login</button>
-      </div>
+      <input
+        type="checkbox"
+        className="navigation__checkbox"
+        id="navi-toggle"
+        onClick={BtnClickNavigation}
+      />
+      <label htmlFor="navi-toggle" className="navigation__button">
+        <span className="navigation__icon"></span>
+      </label>
+      <div className="navigation__background">&nbsp;</div>
+      <nav className="navigation__nav">
+        <ul className="navigation__list">
+          <li className="navigation__item">
+            <a href="#home" className="navigation__link">
+              <span>01</span>Home
+            </a>
+          </li>
+          <li className="navigation__item">
+            <a href="#about" className="navigation__link">
+              <span>02</span>About Us
+            </a>
+          </li>
+          <li className="navigation__item">
+            <a href="#pricing" className="navigation__link">
+              <span>03</span>Pricing
+            </a>
+          </li>
+          <li className="navigation__item">
+            <a href="#features" className="navigation__link">
+              <span>04</span>Features
+            </a>
+          </li>
+          <li className="navigation__item">
+            <a href="#contact" className="navigation__link">
+              <span>05</span>Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
