@@ -14,9 +14,12 @@
 @import "components/login-form";
 @import "components/modal";
 @import "components/signup-form";
+@import "components/university-basic-form";
+@import "components/university-detail-form";
 
 @import "layouts/dashboard-nav";
 @import "layouts/navigation";
 @import "layouts/sidebar";
 
 @import "pages/studentDashboard";
+@import "pages/universityDashboard";

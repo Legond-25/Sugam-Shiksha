@@ -55,7 +55,8 @@
         }
     }
 
-    &__link {
+    &__link:link,
+    &__link:visited {
         text-decoration: none;
         color: $color-white;
         padding-left: 3rem;
@@ -66,10 +67,23 @@
 
     &__icon {
         background-color: rgba($color-white, 0.8);
-        color: $color-grey-dark-3;
+        color: $color-grey-dark-1;
         border-radius: 5px;
-        width: 100%;
+        width: 4rem;
         height: 4rem;
         padding: 1rem;
+        transition: all 0.2s;
     }
+}
+
+.sidebar__item:hover {
+    .sidebar__icon {
+        color: $color-grey-dark-3;
+    }
+}
+
+.sidebar__link--disabled {
+    pointer-events: none;
+    background-color: rgba($color-grey-light-2, 0.2);
+    filter: brightness(80%);
 }

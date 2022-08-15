@@ -26,9 +26,13 @@ const StudentDashboard = (props) => {
     Target: 'fa-solid fa-bullseye',
     Watchlist: 'fa-solid fa-bookmark',
   };
+
+  const disabled = [''];
+  const enabled = [''];
+
   return (
     <div style={position}>
-      <Sidebar icons={icons} />
+      <Sidebar icons={icons} disabled={disabled} enabled={enabled} />
       <DashboardNavbar />
       <section className="section-hero">
         <div className="section-hero__content">

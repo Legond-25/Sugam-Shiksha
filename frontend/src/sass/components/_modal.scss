@@ -26,8 +26,8 @@
 
         &--close {
             background-color: transparent;
-            color: $color-grey-dark;
-            border: 2px solid $color-grey-dark;
+            color: $color-grey-dark-1;
+            border: 2px solid $color-grey-dark-1;
         }
     }
 
@@ -93,7 +93,7 @@
             padding-left: 4rem;
             color: #eb4d4b;
             transition: all 0.2s;
-    
+
             & > i {
                 padding-right: 1rem;
             }
@@ -105,7 +105,7 @@
             padding-left: 4rem;
             color: #20bf6b;
             transition: all 0.2s;
-    
+
             & > i {
                 padding-right: 1rem;
             }
@@ -136,7 +136,7 @@
     &__close {
         &:link,
         &:visited {
-            color: $color-grey-dark;
+            color: $color-grey-dark-1;
             font-size: 3rem;
             text-decoration: none;
             display: inline-block;

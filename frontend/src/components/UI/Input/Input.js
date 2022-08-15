@@ -15,17 +15,23 @@ const Input = React.forwardRef((props, ref) => {
 
   return (
     <>
-      <label htmlFor={props.id}>{props.label}</label>
+      <label htmlFor={props.id} onClick={props.labelClick}>
+        {props.label}
+      </label>
       <input
         ref={inputRef}
         type={props.type}
         id={props.id}
         value={props.value}
         placeholder={props.placeholder}
-        required
+        name={props.name}
+        required={props.required}
+        hidden={props.hidden}
         onChange={props.onChange}
         onBlur={props.onBlur}
         className={`control ${props.isValid === false ? 'invalid' : ''}`}
+        min={props.min}
+        max={props.max}
       />
     </>
   );
