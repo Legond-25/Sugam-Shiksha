@@ -5,6 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
@@ -37,6 +38,8 @@ const LoginForm = (props) => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
+
+  let navigate = useNavigate();
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
@@ -129,14 +132,8 @@ const LoginForm = (props) => {
     [emailIsValid, emailState.value, formIsValid, passwordState.value]
   );
 
-  const showForgotModalHandler = (event) => {
-    event.preventDefault();
-    setShowForgot(true);
-  };
-
-  const showOtpModalHandler = (event) => {
-    event.preventDefault();
-    setShowOtp(true);
+  const getLogin = () => {
+    navigate('/signup');
   };
 
   return (
@@ -198,10 +195,13 @@ const LoginForm = (props) => {
 
         <div className="login__form--footer">
           <p>
-            Don't have an account? <button type="button">Signup</button>
+            Don't have an account?{' '}
+            <button type="button" onClick={getLogin}>
+              Signup
+            </button>
           </p>
           <p>
-            <a href="#modal" onClick={showForgotModalHandler}>
+            <a href="#modal" onClick={() => setShowForgot(true)}>
               Forgot Password?
             </a>
           </p>
@@ -213,7 +213,7 @@ const LoginForm = (props) => {
             <a href="#google">
               <i className="fa-brands fa-google"></i>
             </a>
-            <a href="#modal" onClick={showOtpModalHandler}>
+            <a href="#modal" onClick={() => setShowOtp(true)}>
               <i className="fa-solid fa-envelope"></i>
             </a>
           </div>

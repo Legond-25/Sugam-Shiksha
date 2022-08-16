@@ -1,6 +1,6 @@
 import Sidebar from '../Sidebar/Sidebar';
 import DashboardNavbar from '../Header/DashboardNavbar';
-// import UniBasicForm from './UniBasicForm';
+import UniBasicForm from './UniBasicForm';
 import UniDetailForm from './UniDetailForm';
 
 const position = {

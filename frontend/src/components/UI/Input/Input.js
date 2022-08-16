@@ -32,6 +32,7 @@ const Input = React.forwardRef((props, ref) => {
         className={`control ${props.isValid === false ? 'invalid' : ''}`}
         min={props.min}
         max={props.max}
+        accept={props.accept}
       />
     </>
   );

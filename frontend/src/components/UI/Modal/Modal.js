@@ -35,7 +35,7 @@ const Modal = (props) => {
               </p>
               <p className="modal__header--text">{props.text}</p>
             </div>
-            <a href="#login" className="modal__close" onClick={props.close}>
+            <a href="#modal" className="modal__close" onClick={props.close}>
               &times;
             </a>
           </div>

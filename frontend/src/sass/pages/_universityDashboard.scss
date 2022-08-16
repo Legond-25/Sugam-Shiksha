@@ -29,3 +29,32 @@
         }
     }
 }
+
+.department-syllabus {
+    padding: 1.5rem 0;
+
+    &__group {
+        &:not(:last-child) {
+            padding-bottom: 2rem;
+        }
+    }
+
+    &__label {
+        font-size: 1.5rem;
+        padding-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    &__submit {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__btn {
+        font-size: 1.5rem;
+        padding: 1rem 3rem;
+        margin-top: 2rem;
+        background: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    }
+}

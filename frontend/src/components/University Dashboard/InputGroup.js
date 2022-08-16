@@ -1,6 +1,11 @@
+import { useState } from 'react';
+
 import Input from '../UI/Input/Input';
+import DepartmentModal from './DepartmentModal';
 
 const InputGroup = (props) => {
+  const [departmentModal, setDepartmentModal] = useState(false);
+
   return (
     <form className="university-detail__input-group">
       <div className="university-detail__input">
@@ -43,10 +48,19 @@ const InputGroup = (props) => {
       </div>
 
       <div className="university-detail__input-submit">
-        <button className="btn university-detail__input-btn" type="submit">
+        <button
+          className="btn university-detail__input-btn"
+          type="submit"
+          onClick={() => setDepartmentModal(true)}
+        >
           Add Department
         </button>
       </div>
+
+      <DepartmentModal
+        onShow={departmentModal}
+        onClose={() => setDepartmentModal(false)}
+      ></DepartmentModal>
     </form>
   );
 };
