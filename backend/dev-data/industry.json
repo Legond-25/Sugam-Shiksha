@@ -1,0 +1,90 @@
+[
+  {
+    "companyName": "Wizard Tech",
+    "companyAddress": "28 5th Street, South, United States, Texas  39830",
+    "specialization": "Operation Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 10
+  },
+  {
+    "companyName": "Techtod",
+    "companyAddress": "Herentalsebaan 493,Brussel,Walloon Brabant,1140,",
+    "specialization": "Architectural Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 8
+  },
+  {
+    "companyName": "BitFuse",
+    "companyAddress": "Rue Camille Joset 46 2,9630 Bilzen,Belgium",
+    "specialization": "Software Project Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 12
+  },
+  {
+    "companyName": "Giga",
+    "companyAddress": "Avenue Emile Vandervelde 67 10,3370 Geraardsbergen,Belgium",
+    "specialization": "Cyber Law Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 7
+  },
+  {
+    "companyName": "Cloudify",
+    "companyAddress": "Snellmaninkatu 79,2740,ESPOO,Finland",
+    "specialization": "Marketing Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 15
+  },
+  {
+    "companyName": "OasisTech",
+    "companyAddress": "Unit C 2 / F. Wah Lik Ind. Ctr. 459-469 Castle Peak Road,Sham Shui Po District,Hongkong",
+    "specialization": "Project Management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 9
+  },
+  {
+    "companyName": "Cyber Tech",
+    "companyAddress": "P.O.Box 4792,Tripoli,Libya",
+    "specialization": "Computer Engineering",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 10
+  },
+  {
+    "companyName": "Techizer",
+    "companyAddress": "Salwa Road P.O.Box 21919,,Qatar",
+    "specialization": "Data Science",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 8
+  },
+  {
+    "companyName": "DataBug",
+    "companyAddress": "35  Welsh Road,Aston Le Walls,England,United Kingdom",
+    "specialization": "System Engineering",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 6
+  },
+  {
+    "companyName": "TecTum",
+    "companyAddress": "2 massif gulabad shaykhantakhur area,Tashkent,Uzbekistan",
+    "specialization": "Digital investigations",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 16
+  },
+  {
+    "companyName": "BoreDom",
+    "companyAddress": "Kavak Köyü,16, 32702, Keçiborlu/ Isparta, Turkey",
+    "specialization": "Information systems management",
+    "idCard": "id.jpeg",
+    "proofDocs": ["proof1.jpeg", "proof2.jpeg"],
+    "experience": 10
+  }
+]

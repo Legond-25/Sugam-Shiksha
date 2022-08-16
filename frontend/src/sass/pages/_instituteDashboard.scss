@@ -1,0 +1,39 @@
+.institute-dashboard {
+  padding: 12rem 15rem;
+  padding-bottom: 0;
+
+  &__welcome {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    line-height: 2;
+
+    background-image: linear-gradient(
+      to right bottom,
+      $color-secondary-light,
+      $color-secondary-dark
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  &__header {
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 1;
+
+    background-image: linear-gradient(
+      to right bottom,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    & > span {
+      font-size: 4rem;
+    }
+  }
+}

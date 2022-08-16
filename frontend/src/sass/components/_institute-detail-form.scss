@@ -1,0 +1,105 @@
+.university-detail {
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 2rem;
+    grid-column-gap: 5rem;
+
+    padding: 3rem 5rem;
+    background-color: rgba($color-grey-light-2, 0.5);
+    margin-top: 4rem;
+    border-radius: 10px;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  &__enter {
+    background-color: transparent;
+    border: none;
+
+    &:hover > i {
+      color: $color-secondary-dark;
+    }
+
+    & > i {
+      font-size: 3rem;
+      color: $color-secondary-light;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  &__form-group {
+    position: relative;
+    grid-column: 1 / -1;
+
+    & > input {
+      width: 20%;
+      margin-right: 3rem;
+    }
+  }
+
+  &__input-group {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 2rem;
+    border-bottom: 2px solid $color-grey-light-2;
+    padding-bottom: 2.5rem;
+  }
+
+  &__submit {
+    grid-column: 2/3;
+    justify-self: flex-end;
+    margin-top: 2rem;
+  }
+
+  &__btn {
+    padding: 1rem 4rem;
+    background-image: linear-gradient(
+      to right bottom,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    color: $color-white;
+
+    &:hover > i {
+      transform: translateX(5px);
+    }
+
+    & > i {
+      transition: all 0.2s ease;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__input-submit {
+    justify-self: flex-end;
+    align-self: flex-end;
+  }
+
+  &__input-btn {
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+
+    background-image: linear-gradient(
+      to right bottom,
+      $color-secondary-light,
+      $color-secondary-dark
+    );
+    color: $color-white;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}

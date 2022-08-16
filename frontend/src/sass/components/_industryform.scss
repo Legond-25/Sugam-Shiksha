@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;700&display=swap");
+
+:root {
+  --green: #00e77f;
+  --white: #fff;
+  --light-white: #aaa;
+  --black: #f6f6f6;
+  --light-bg: #f1e1f4;
+}
+
+section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border-radius: 5rem;
+
+  background-color: #703e78;
+  cursor: pointer;
+
+  color: #d6a4de;
+  font-size: 1.8rem;
+  padding: 1rem 3rem;
+}
+
+.btn:hover {
+  background-color: #d6a4de;
+  color: var(--black);
+}
+
+.heading {
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 4rem;
+  color: var(--white);
+  text-transform: uppercase;
+  font-family: "Poppins";
+}
+
+.heading span {
+  display: block;
+  margin-right: 50%;
+  color: $color-secondary-light;
+  text-transform: uppercase;
+  margin-right: 0%;
+}
+
+.heading .welcome_text {
+  color: $color-primary;
+  padding: 1.6rem 0;
+}
+
+.heading .welcome_text span {
+  display: inline-block;
+}
+
+.industry_form .row {
+  margin-top: -5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.industry_form .image {
+  flex: 2 2 40rem;
+}
+
+.industry_form .image img {
+  height: 63rem;
+  width: 65rem;
+  margin-left: -5%;
+  margin-top: -2rem;
+}
+
+.industry_form .row form {
+  flex: 1 1 40rem;
+}
+.industry_form .row form input {
+  border: none;
+}
+
+.industry_form .row form .box {
+  width: 100%;
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  background-color: #e7ebf4;
+  font-size: 1.8rem;
+  color: var(--white);
+  padding: 1.4rem;
+  text-transform: none;
+}
+
+.industry_form .row form span {
+  color: #455a64;
+}
+
+.formT {
+  color: #37474f;
+  width: 50%;
+  font-size: 1.5rem;
+  margin: 2rem 0;
+
+  padding-bottom: 2px;
+  border-bottom: 1px solid #37474f;
+}
+.formT h1 {
+  display: inline-block;
+  padding-bottom: 2px;
+  font-size: 2rem;
+}
+
+.formT span {
+  color: #455a64;
+}
+
+.industry_form .row form span {
+  font-size: 1.6rem;
+  color: var(--light-white);
+}
+
+/* media queries  */
+
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .heading {
+    font-size: 3rem;
+    margin-right: 50%;
+    color: #703e78;
+  }
+}

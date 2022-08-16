@@ -1,0 +1,227 @@
+[
+  {
+    "course": {
+      "level": "Intermediate",
+      "no_of_lessons": 35,
+      "time": "18h 15m 44s",
+      "imageCover": "deep-learning.jpeg",
+      "courseName": "Deep Learning with Python",
+      "ratings": 5,
+      "noOfCourses": 10,
+      "logo": "logo.jpeg",
+      "noOfReviews": 18,
+      "price": 499,
+      "noOfStudents": 47
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 48,
+      "time": "19h 10m 24s",
+      "imageCover": "mechanical.jpeg",
+      "courseName": "Mechanics & Statics",
+      "ratings": 4,
+      "noOfCourses": 11,
+      "logo": "logo.jpeg",
+      "noOfReviews": 22,
+      "price": 499,
+      "noOfStudents": 65
+    }
+  },
+  {
+    "course": {
+      "level": "Basic",
+      "no_of_lessons": 80,
+      "time": "22h 10m 12s",
+      "imageCover": "autocad.jpeg",
+      "courseName": "Autodesk AutoCAD",
+      "ratings": 4,
+      "noOfCourses": 12,
+      "logo": "logo.jpeg",
+      "noOfReviews": 21,
+      "price": 399,
+      "noOfStudents": 55
+    }
+  },
+  {
+    "course": {
+      "level": "Intermediate",
+      "no_of_lessons": 31,
+      "time": "15h 10m 08s",
+      "imageCover": "robotics.jpeg",
+      "courseName": "Introduction to ROS",
+      "ratings": 4,
+      "noOfCourses": 8,
+      "logo": "logo.jpeg",
+      "noOfReviews": 15,
+      "price": 299,
+      "noOfStudents": 46
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 36,
+      "time": "21h 10m 24s",
+      "imageCover": "electrical.jpeg",
+      "courseName": "Deep dive in Electricity",
+      "ratings": 5,
+      "noOfCourses": 15,
+      "logo": "logo.jpeg",
+      "noOfReviews": 45,
+      "price": 699,
+      "noOfStudents": 91
+    }
+  },
+  {
+    "course": {
+      "level": "Basic",
+      "no_of_lessons": 21,
+      "time": "14h 14m 36s",
+      "imageCover": "blockchain.jpeg",
+      "courseName": "Blockchain with Applications",
+      "ratings": 4,
+      "noOfCourses": 10,
+      "logo": "logo.jpeg",
+      "noOfReviews": 12,
+      "price": 299,
+      "noOfStudents": 15
+    }
+  },
+  {
+    "course": {
+      "level": "Basic",
+      "no_of_lessons": 18,
+      "time": "16h 14m 26s",
+      "imageCover": "javascript.jpeg",
+      "courseName": "Javascript for Beginners",
+      "ratings": 5,
+      "noOfCourses": 15,
+      "logo": "logo.jpeg",
+      "noOfReviews": 25,
+      "price": 499,
+      "noOfStudents": 18
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 25,
+      "time": "24h 14m 18s",
+      "imageCover": "engines.jpeg",
+      "courseName": "Internal Combustion Engine",
+      "ratings": 4,
+      "noOfCourses": 12,
+      "logo": "logo.jpeg",
+      "noOfReviews": 35,
+      "price": 399,
+      "noOfStudents": 28
+    }
+  },
+  {
+    "course": {
+      "level": "Intermediate",
+      "no_of_lessons": 15,
+      "time": "13h 12m 16s",
+      "imageCover": "sheets.jpeg",
+      "courseName": "Sheet Metal Design",
+      "ratings": 3,
+      "noOfCourses": 9,
+      "logo": "logo.jpeg",
+      "noOfReviews": 10,
+      "price": 199,
+      "noOfStudents": 18
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 17,
+      "time": "19h 01m 18s",
+      "imageCover": "pcb.jpeg",
+      "courseName": "Electronics PCB Design",
+      "ratings": 4,
+      "noOfCourses": 18,
+      "logo": "logo.jpeg",
+      "noOfReviews": 16,
+      "price": 399,
+      "noOfStudents": 30
+    }
+  },
+  {
+    "course": {
+      "level": "Basic",
+      "no_of_lessons": 15,
+      "time": "13h 16m 12s",
+      "imageCover": "automotive.jpeg",
+      "courseName": "Automotive Electronics",
+      "ratings": 4,
+      "noOfCourses": 12,
+      "logo": "logo.jpeg",
+      "noOfReviews": 19,
+      "price": 299,
+      "noOfStudents": 35
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 18,
+      "time": "23h 22m 35s",
+      "imageCover": "construction.jpeg",
+      "courseName": "Construction Methodology",
+      "ratings": 5,
+      "noOfCourses": 13,
+      "logo": "logo.jpeg",
+      "noOfReviews": 25,
+      "price": 499,
+      "noOfStudents": 45
+    }
+  },
+  {
+    "course": {
+      "level": "Basic",
+      "no_of_lessons": 15,
+      "time": "10h 22m 12s",
+      "imageCover": "civil3d.jpeg",
+      "courseName": "Civil-3D",
+      "ratings": 4,
+      "noOfCourses": 10,
+      "logo": "logo.jpeg",
+      "noOfReviews": 18,
+      "price": 299,
+      "noOfStudents": 15
+    }
+  },
+  {
+    "course": {
+      "level": "Intermediate",
+      "no_of_lessons": 18,
+      "time": "15h 42m 52s",
+      "imageCover": "hacking.jpeg",
+      "courseName": "Ethical Hacking",
+      "ratings": 5,
+      "noOfCourses": 12,
+      "logo": "logo.jpeg",
+      "noOfReviews": 38,
+      "price": 499,
+      "noOfStudents": 45
+    }
+  },
+  {
+    "course": {
+      "level": "Advanced",
+      "no_of_lessons": 20,
+      "time": "25h 22m 12s",
+      "imageCover": "java.jpeg",
+      "courseName": "Java in Depth",
+      "ratings": 5,
+      "noOfCourses": 25,
+      "logo": "logo.jpeg",
+      "noOfReviews": 58,
+      "price": 699,
+      "noOfStudents": 60
+    }
+  }
+]

@@ -1,0 +1,109 @@
+.wrapper {
+  width: 130rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20rem 0;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+
+  & > .image {
+    align-self: center;
+  }
+
+  & > .image > .wrapper_img {
+    height: 50rem;
+  }
+
+  & > .block {
+    background-color: rgb(215, 174, 253);
+    position: relative;
+    padding: 5rem 7rem;
+    height: max-content;
+    width: max-content;
+    border-radius: 2rem;
+    font-size: 2.4rem;
+    font-weight: 500;
+  }
+
+  & > .block > .clip_paths-shape {
+    background-color: rgb(215, 174, 253);
+    position: absolute;
+    top: 50%;
+    left: -6%;
+    clip-path: path(
+      "M82.83,1.22S52.82,31.73.77,42.46a.32.32,0,0,0,0,.63c7.45,2.21,47.35,13.16,82.1,5.79Z"
+    );
+    height: 5rem;
+    width: 5rem;
+  }
+
+  & > .alumni_bot-right {
+    position: absolute;
+    top: 30%;
+    right: -27%;
+
+    & > .alumni_bot_image-2 {
+      width: 50rem;
+    }
+  }
+}
+
+.loader {
+  margin-top: 2rem;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
+.loader .stroke {
+  display: block;
+  position: relative;
+  background: $color-primary-light;
+  height: 100%;
+  width: 10px;
+  border-radius: 50px;
+  margin: 0 5px;
+  animation: animate 1.2s linear infinite;
+}
+
+@keyframes animate {
+  50% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.stroke:nth-child(1) {
+  animation-delay: 0s;
+}
+.stroke:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stroke:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.stroke:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.stroke:nth-child(5) {
+  animation-delay: 0s;
+}
+
+.botOptions_grid {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+
+  height: max-content;
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
