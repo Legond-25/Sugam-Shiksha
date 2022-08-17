@@ -421,13 +421,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  cursor: pointer; }
+  align-items: center; }
   .login-type__label > img {
     width: 22rem;
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     background-color: #eee;
-    transition: all 0.3s ease; }
+    transition: all 0.3s ease;
+    cursor: pointer; }
     .login-type__label > img:hover {
       transform: scale(1.1); }
   .login-type__label > span {
@@ -437,6 +437,7 @@ body {
     font-weight: 600;
     letter-spacing: 1.5px;
     line-height: 2;
+    cursor: pointer;
     background-image: linear-gradient(to right, #5268c7, #2c3d87);
     background-clip: text;
     -webkit-background-clip: text;

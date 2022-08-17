@@ -19,13 +19,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
 
         & > img {
             width: 22rem;
             clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
             background-color: $color-grey-light-2;
             transition: all 0.3s ease;
+            cursor: pointer;
 
             &:hover {
                 transform: scale(1.1);
@@ -39,6 +39,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             line-height: 2;
+            cursor: pointer;
 
             background-image: linear-gradient(to right, $color-secondary-light, $color-secondary-dark);
             background-clip: text;

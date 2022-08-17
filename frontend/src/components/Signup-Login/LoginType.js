@@ -12,6 +12,9 @@ import industryGif from '../../assets/gifs/industry.gif';
 import aicteGif from '../../assets/gifs/aicte.gif';
 import universityGif from '../../assets/gifs/university.gif';
 
+import { sendPostRequest } from '../../utils/sendHttp';
+import { showAlert } from '../../utils/alerts';
+
 const LoginType = (props) => {
   const changeToGifHandler = (event) => {
     const value = event.target.alt;
@@ -45,6 +48,30 @@ const LoginType = (props) => {
     }
   };
 
+  const submitHandler = async (event) => {
+    try {
+      event.preventDefault();
+
+      const user = event.target.parentElement.nextSibling.id;
+
+      const data = {
+        user,
+      };
+
+      const res = await sendPostRequest(
+        'http://localhost:8080/api/v1/auth/loginUserType',
+        data
+      );
+
+      if (res.data.status === 'success') {
+        showAlert('success', 'You can proceed towards login');
+      }
+    } catch (err) {
+      console.log(err);
+      showAlert('error', err);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -56,8 +83,9 @@ const LoginType = (props) => {
               alt="student"
               onMouseOver={changeToGifHandler}
               onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
             />
-            <span>Student</span>
+            <span onClick={submitHandler}>Student</span>
           </label>
           <input
             className="login-type__input"
@@ -75,8 +103,9 @@ const LoginType = (props) => {
               alt="institute"
               onMouseOver={changeToGifHandler}
               onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
             />
-            <span>Institute</span>
+            <span onClick={submitHandler}>Institute</span>
           </label>
           <input
             className="login-type__input"
@@ -94,8 +123,9 @@ const LoginType = (props) => {
               alt="university"
               onMouseOver={changeToGifHandler}
               onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
             />
-            <span>University</span>
+            <span onClick={submitHandler}>University</span>
           </label>
           <input
             className="login-type__input"
@@ -113,8 +143,9 @@ const LoginType = (props) => {
               alt="industry"
               onMouseOver={changeToGifHandler}
               onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
             />
-            <span>Industry</span>
+            <span onClick={submitHandler}>Industry</span>
           </label>
           <input
             className="login-type__input"
@@ -132,8 +163,9 @@ const LoginType = (props) => {
               alt="aicte"
               onMouseOver={changeToGifHandler}
               onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
             />
-            <span>AICTE</span>
+            <span onClick={submitHandler}>AICTE</span>
           </label>
           <input
             className="login-type__input"

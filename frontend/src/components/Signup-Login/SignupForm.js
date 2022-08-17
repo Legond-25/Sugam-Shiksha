@@ -1,4 +1,5 @@
 import React, { useRef, useReducer, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
@@ -270,7 +271,7 @@ const SignupForm = () => {
 
       <div className="signup__form--footer">
         <p>
-          Already have an account? <a href="#login">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
         {error && (
           <p className="signup__form--error">

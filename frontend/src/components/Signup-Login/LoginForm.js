@@ -195,7 +195,7 @@ const LoginForm = (props) => {
             </button>
           </p>
           <p>
-            <a href="/forgotPassword" onClick={() => setShowForgot(true)}>
+            <a href="#modal" onClick={() => setShowForgot(true)}>
               Forgot Password?
             </a>
           </p>
@@ -207,7 +207,7 @@ const LoginForm = (props) => {
             <a href="#google">
               <i className="fa-brands fa-google"></i>
             </a>
-            <a href="/sendOtp" onClick={() => setShowOtp(true)}>
+            <a href="#modal" onClick={() => setShowOtp(true)}>
               <i className="fa-solid fa-envelope"></i>
             </a>
           </div>
