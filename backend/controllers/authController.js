@@ -49,12 +49,14 @@ exports.loginUserType = catchAsync(async (req, res) => {
 
 // Sign Up User
 exports.signup = catchAsync(async (req, res) => {
+  if (req.cookies.userLoginType) {
+    req.body.user = req.cookies.userLoginType;
+  }
   // 1.) Create new user based on req.body
   const newUser = await User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    user: req.body.user,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     passwordChangedAt: req.body.passwordChangedAt,

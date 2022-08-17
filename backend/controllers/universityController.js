@@ -17,7 +17,18 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createUniversity = factory.createOne(University);
+exports.createUniversity = catchAsync(async (req, res, next) => {
+  const newUniversity = await University.create(req.body);
+
+  res.status(200).json({
+    status: "success",
+    data: {
+      data: newUniversity,
+    },
+  });
+});
+
+// exports.createUniversity = factory.createOne(University);
 
 exports.getAllUniversities = factory.getAll(University);
 
