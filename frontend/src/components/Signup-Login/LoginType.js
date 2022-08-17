@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
 
 import student from '../../assets/images/student.png';
@@ -14,8 +17,14 @@ import universityGif from '../../assets/gifs/university.gif';
 
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
+import AuthContext from '../../store/auth-context';
 
 const LoginType = (props) => {
+  // Declared Context
+  const authCtx = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
   const changeToGifHandler = (event) => {
     const value = event.target.alt;
 
@@ -58,6 +67,8 @@ const LoginType = (props) => {
         user,
       };
 
+      authCtx.loginUserType(user);
+
       const res = await sendPostRequest(
         'http://localhost:8080/api/v1/auth/loginUserType',
         data
@@ -65,6 +76,7 @@ const LoginType = (props) => {
 
       if (res.data.status === 'success') {
         showAlert('success', 'You can proceed towards login');
+        navigate('/login');
       }
     } catch (err) {
       console.log(err);

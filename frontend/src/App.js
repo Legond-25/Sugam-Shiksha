@@ -16,8 +16,8 @@ function App() {
         <Route path="/login-select" element={<LoginType />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/university-dashboard" element={<UniversityDashboard />} />
+        <Route path="/studentDashboard" element={<StudentDashboard />} />
+        <Route path="/universityDashboard" element={<UniversityDashboard />} />
       </Routes>
     </BrowserRouter>
   );

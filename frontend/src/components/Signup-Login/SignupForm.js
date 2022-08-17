@@ -1,10 +1,17 @@
-import React, { useRef, useReducer, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, {
+  useRef,
+  useReducer,
+  useState,
+  useEffect,
+  useContext,
+} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
 
 import Input from '../UI/Input/Input';
+import AuthContext from '../../store/auth-context';
 
 // Defined Reducers
 const emailReducer = (state, action) => {
@@ -36,6 +43,12 @@ const confirmPasswordReducer = (state, action) => {
 };
 
 const SignupForm = () => {
+  // Declared AuthContext
+  const authCtx = useContext(AuthContext);
+
+  // Declared Navigate
+  const navigate = useNavigate();
+
   // Declared Refs
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -115,6 +128,7 @@ const SignupForm = () => {
   // Defined Submit Handlers
   const submitHandler = async (event) => {
     event.preventDefault();
+    const userType = authCtx.userType;
     // setIsLoading(true);
     setError(null);
     try {
@@ -123,6 +137,7 @@ const SignupForm = () => {
           firstName: firstname,
           lastName: lastname,
           email: emailState.value,
+          user: userType,
           password: passwordState.value,
           passwordConfirm: confirmPasswordState.value,
         };
@@ -133,6 +148,7 @@ const SignupForm = () => {
 
         if (res.data.status === 'success') {
           showAlert('success', 'User registered successfully');
+          console.log(res);
         }
       } else if (!emailIsValid) {
         emailInputRef.current.focus();
