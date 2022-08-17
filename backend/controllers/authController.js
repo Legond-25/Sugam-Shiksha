@@ -59,14 +59,17 @@ exports.signup = catchAsync(async (req, res) => {
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    user:req.body.user,
     passwordChangedAt: req.body.passwordChangedAt,
     passwordResetToken: req.body.passwordResetToken,
     passwordResetExpires: req.body.passwordResetExpires,
     active: req.body.active,
   });
 
-  // 2.) Sign JSON token and sennd back to clien
+  // 2.) Sign JSON token and sennd back to client
   createSendToken(newUser, 201, req, res);
+
+  res.clearCookie("userLoginType");
 });
 
 // Login User
