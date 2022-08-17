@@ -1,5 +1,5 @@
-import Modal from '../UI/Modal/Modal';
-import Input from '../UI/Input/Input';
+import Modal from '../../UI/Modal/Modal';
+import Input from '../../UI/Input/Input';
 
 const DepartmentModal = (props) => {
   return (

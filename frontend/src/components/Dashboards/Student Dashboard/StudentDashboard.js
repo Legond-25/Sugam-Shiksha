@@ -1,19 +1,19 @@
 import Card from './Card/Card';
 import Category from './Category/Category';
-import Sidebar from '../Sidebar/Sidebar';
-import DashboardNavbar from '../Header/DashboardNavbar';
+import Sidebar from './../../Sidebar/Sidebar';
+import DashboardNavbar from './../../Header/DashboardNavbar';
 
-import about_1 from './../../assets/images/about-banner.jpg';
-import about_2 from './../../assets/images/about-abs-1.jpg';
-import about_3 from './../../assets/images/about-abs-2.jpg';
+import about_1 from '../../../assets/images/about-banner.jpg';
+import about_2 from '../../../assets/images/about-abs-1.jpg';
+import about_3 from '../../../assets/images/about-abs-2.jpg';
 
-import about_icon_1 from './../../assets/images/about-icon-1.png';
-import about_icon_2 from './../../assets/images/about-icon-2.png';
-import about_icon_3 from './../../assets/images/about-icon-3.png';
+import about_icon_1 from '../../../assets/images/about-icon-1.png';
+import about_icon_2 from '../../../assets/images/about-icon-2.png';
+import about_icon_3 from '../../../assets/images/about-icon-3.png';
 
-import hero_1 from './../../assets/images/p-2.jpeg';
-import hero_2 from './../../assets/images/p-1.jpeg';
-import hero_3 from './../../assets/images/p-3.jpeg';
+import hero_1 from '../../../assets/images/p-2.jpeg';
+import hero_2 from '../../../assets/images/p-1.jpeg';
+import hero_3 from '../../../assets/images/p-3.jpeg';
 
 const position = {
   position: 'relative',

@@ -1,16 +1,11 @@
-import React, {
-  useRef,
-  useReducer,
-  useCallback,
-  useState,
-  useEffect,
-} from 'react';
+import React, { useRef, useReducer, useState, useEffect } from 'react';
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
 
 import Input from '../UI/Input/Input';
 
+// Defined Reducers
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: validator.isEmail(state.value) };
@@ -20,7 +15,6 @@ const emailReducer = (state, action) => {
   }
   return { value: '', isValid: false };
 };
-
 const passwordReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: action.val.trim().length > 8 };
@@ -30,7 +24,6 @@ const passwordReducer = (state, action) => {
   }
   return { value: '', isValid: false };
 };
-
 const confirmPasswordReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: action.val.trim().length > 8 };
@@ -42,6 +35,14 @@ const confirmPasswordReducer = (state, action) => {
 };
 
 const SignupForm = () => {
+  // Declared Refs
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+  const confirmPasswordInputRef = useRef();
+  const firstnameInputRef = useRef();
+  const lastnameInputRef = useRef();
+
+  // Declared States
   const [formIsValid, setFormIsValid] = useState(false);
   const [error, setError] = useState(null);
   const [firstname, setFirstname] = useState('');
@@ -50,16 +51,15 @@ const SignupForm = () => {
   const [isConfirmPassVisible, setConfirmPassVisible] =
     useState('visibility_off');
 
+  // Declared Reducers
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
     isValid: null,
   });
-
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: '',
     isValid: null,
   });
-
   const [confirmPasswordState, dispatchConfirmPassword] = useReducer(
     confirmPasswordReducer,
     {
@@ -72,12 +72,7 @@ const SignupForm = () => {
   const { isValid: passwordIsValid } = passwordState;
   const { isValid: confirmPasswordIsValid } = confirmPasswordState;
 
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
-  const confirmPasswordInputRef = useRef();
-  const firstnameInputRef = useRef();
-  const lastnameInputRef = useRef();
-
+  // Declared Effects
   useEffect(() => {
     const identifier = setTimeout(() => {
       setFormIsValid(emailIsValid && passwordIsValid && confirmPasswordIsValid);
@@ -88,86 +83,74 @@ const SignupForm = () => {
     };
   }, [emailIsValid, passwordIsValid, confirmPasswordIsValid]);
 
+  // Defined Change Handlers
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: 'USER_INPUT', val: event.target.value });
   };
-  const validateEmailHandler = () => {
-    dispatchEmail({ type: 'INPUT_BLUR' });
-  };
-
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: 'USER_INPUT', val: event.target.value });
   };
-  const validatePasswordHandler = () => {
-    dispatchPassword({ type: 'INPUT_BLUR' });
-  };
-
   const confirmPasswordChangeHandler = (event) => {
     dispatchConfirmPassword({ type: 'USER_INPUT', val: event.target.value });
+  };
+  const firstnameChangeHandler = (event) => {
+    setFirstname(event.target.value);
+  };
+  const lastnameChangeHandler = (event) => {
+    setLastname(event.target.value);
+  };
+
+  // Defined Validate Handlers
+  const validateEmailHandler = () => {
+    dispatchEmail({ type: 'INPUT_BLUR' });
+  };
+  const validatePasswordHandler = () => {
+    dispatchPassword({ type: 'INPUT_BLUR' });
   };
   const validateConfirmPasswordHandler = () => {
     dispatchConfirmPassword({ type: 'INPUT_BLUR' });
   };
 
-  const firstnameChangeHandler = (event) => {
-    setFirstname(event.target.value);
-  };
+  // Defined Submit Handlers
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    // setIsLoading(true);
+    setError(null);
+    try {
+      if (formIsValid) {
+        const data = {
+          firstName: firstname,
+          lastName: lastname,
+          email: emailState.value,
+          password: passwordState.value,
+          passwordConfirm: confirmPasswordState.value,
+        };
+        const res = await sendPostRequest(
+          'http://localhost:8080/api/v1/auth/signup',
+          data
+        );
 
-  const lastnameChangeHandler = (event) => {
-    setLastname(event.target.value);
-  };
-
-  const submitHandler = useCallback(
-    async (event) => {
-      console.log(event);
-      event.preventDefault();
-      // setIsLoading(true);
-      setError(null);
-      try {
-        if (formIsValid) {
-          const data = {
-            firstName: firstname,
-            lastName: lastname,
-            email: emailState.value,
-            password: passwordState.value,
-            passwordConfirm: confirmPasswordState.value,
-          };
-          const res = await sendPostRequest(
-            'http://localhost:8080/api/v1/auth/signup',
-            data
-          );
-
-          if (res.data.status === 'success') {
-            showAlert('success', 'User registered successfully');
-          }
-        } else if (!emailIsValid) {
-          emailInputRef.current.focus();
-          setError('Please enter a valid email address');
-        } else if (!passwordIsValid) {
-          passwordInputRef.current.focus();
-          setError('Length of password must be greater than 8');
-        } else {
-          confirmPasswordInputRef.current.focus();
-          setError('Length of password must be greater than 8');
+        if (res.data.status === 'success') {
+          showAlert('success', 'User registered successfully');
         }
-      } catch (err) {
-        showAlert('error', err.response.data.message);
+      } else if (!emailIsValid) {
+        emailInputRef.current.focus();
+        setError('Please enter a valid email address');
+      } else if (!passwordIsValid) {
+        passwordInputRef.current.focus();
+        setError('Length of password must be greater than 8');
+      } else {
+        confirmPasswordInputRef.current.focus();
+        setError('Length of password must be greater than 8');
       }
+    } catch (err) {
+      showAlert('error', err.response.data.message);
+    }
 
-      // setIsLoading(false);
-    },
-    [
-      emailIsValid,
-      emailState.value,
-      formIsValid,
-      passwordState.value,
-      confirmPasswordState.value,
-      firstname,
-      lastname,
-      passwordIsValid,
-    ]
-  );
+    // setIsLoading(false);
+  };
 
+  // Declared Visible Handlers
   const passwordVisibleHandler = (event) => {
     if (event.target.innerHTML === 'visibility_off') {
       event.target.parentElement.children[1].type = 'string';
@@ -177,7 +160,6 @@ const SignupForm = () => {
       setPassVisible('visibility_off');
     }
   };
-
   const confirmPasswordVisibleHandler = (event) => {
     if (event.target.innerHTML === 'visibility_off') {
       event.target.parentElement.children[4].type = 'string';

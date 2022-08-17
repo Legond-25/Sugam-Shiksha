@@ -1,13 +1,13 @@
-import Sidebar from '../Sidebar/Sidebar';
-import DashboardNavbar from '../Header/DashboardNavbar';
-import UniBasicForm from './UniBasicForm';
-import UniDetailForm from './UniDetailForm';
+import Sidebar from '../../Sidebar/Sidebar';
+import DashboardNavbar from '../../Header/DashboardNavbar';
+import InsBasicForm from './InsBasicForm';
+// import UniDetailForm from "./UniDetailForm";
 
 const position = {
   position: 'relative',
 };
 
-const UniversityDashboard = (props) => {
+const InstituteDashboard = (props) => {
   const icons = {
     Reports: 'fa-solid fa-chart-pie',
     Schedule: 'fa-solid fa-calendar',
@@ -29,11 +29,11 @@ const UniversityDashboard = (props) => {
         <h2 className="university-dashboard__header">
           Tell us about your <span>University...</span>
         </h2>
-        {/* <UniBasicForm /> */}
-        <UniDetailForm />
+        <InsBasicForm />
+        {/* <UniDetailForm /> */}
       </div>
     </div>
   );
 };
 
-export default UniversityDashboard;
+export default InstituteDashboard;

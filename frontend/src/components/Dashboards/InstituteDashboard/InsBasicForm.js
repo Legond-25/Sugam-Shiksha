@@ -1,4 +1,4 @@
-import Input from "./../UI/Input/Input";
+import Input from '../../UI/Input/Input';
 
 const onClickDropdownHandler = (event) => {
   const value = event.target.innerHTML;
@@ -8,13 +8,13 @@ const onClickDropdownHandler = (event) => {
   event.target.parentElement.parentElement.previousElementSibling.value = value;
 
   event.target.parentElement.parentElement.previousElementSibling.style.color =
-    "black";
+    'black';
 
-  event.target.parentElement.parentElement.style.display = "none";
+  event.target.parentElement.parentElement.style.display = 'none';
 };
 
 const showDropdownHandler = (event) => {
-  event.target.nextSibling.style.display = "block";
+  event.target.nextSibling.style.display = 'block';
 };
 
 const UniBasicForm = (props) => {

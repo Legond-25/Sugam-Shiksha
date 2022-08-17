@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Input from './../UI/Input/Input';
+import Input from '../../UI/Input/Input';
 import InputGroup from './InputGroup';
 
 const UniDetailForm = (props) => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Input from '../UI/Input/Input';
+import Input from '../../UI/Input/Input';
 import DepartmentModal from './DepartmentModal';
 
 const InputGroup = (props) => {

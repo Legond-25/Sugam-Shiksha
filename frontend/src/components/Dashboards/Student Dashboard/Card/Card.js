@@ -1,4 +1,4 @@
-import machineImg from './../../../assets/images/Deep Learning.jpeg';
+import machineImg from '../../../../assets/images/Deep Learning.jpeg';
 
 const Card = (props) => {
   return (

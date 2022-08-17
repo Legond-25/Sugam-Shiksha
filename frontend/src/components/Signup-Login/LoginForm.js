@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useReducer,
-  useRef,
-  useCallback,
-} from 'react';
+import React, { useState, useEffect, useReducer, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import validator from 'validator';
@@ -35,32 +29,35 @@ const passwordReducer = (state, action) => {
 };
 
 const LoginForm = (props) => {
+  // Declared Refs
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  // Declared States
   const [formIsValid, setFormIsValid] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
+  const [error, setError] = useState(null);
+  const [isPassVisible, setPassVisible] = useState('visibility_off');
+  // const [isLoading, setIsLoading] = useState(false);
 
+  // Declared Navigate
   let navigate = useNavigate();
 
+  // Declared Reducers
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
     isValid: null,
   });
-
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: '',
     isValid: null,
   });
 
-  // const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [isPassVisible, setPassVisible] = useState('visibility_off');
-
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
 
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
-
+  // Declared UseEffect
   useEffect(() => {
     const identifier = setTimeout(() => {
       setFormIsValid(emailIsValid && passwordIsValid);
@@ -71,22 +68,21 @@ const LoginForm = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
+  // Defined Change Handlers
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: 'USER_INPUT', val: event.target.value });
   };
-
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: 'USER_INPUT', val: event.target.value });
   };
 
+  // Defined Validation Handlers
   const validateEmailHandler = () => {
     dispatchEmail({ type: 'INPUT_BLUR' });
   };
-
   const validatePasswordHandler = () => {
     dispatchPassword({ type: 'INPUT_BLUR' });
   };
-
   const passwordVisibleHandler = (event) => {
     if (event.target.innerHTML === 'visibility_off') {
       event.target.parentElement.children[1].type = 'string';
@@ -97,40 +93,38 @@ const LoginForm = (props) => {
     }
   };
 
-  const submitHandler = useCallback(
-    async (event) => {
-      event.preventDefault();
-      // setIsLoading(true);
-      setError(null);
-      try {
-        if (formIsValid) {
-          const data = {
-            email: emailState.value,
-            password: passwordState.value,
-          };
-          const res = await sendPostRequest(
-            'http://localhost:8080/api/v1/auth/login',
-            data
-          );
+  // Defined Submit Handler
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    // setIsLoading(true);
+    setError(null);
+    try {
+      if (formIsValid) {
+        const data = {
+          email: emailState.value,
+          password: passwordState.value,
+        };
+        const res = await sendPostRequest(
+          'http://localhost:8080/api/v1/auth/login',
+          data
+        );
 
-          if (res.data.status === 'success') {
-            showAlert('success', 'Logged in successfully');
-          }
-        } else if (!emailIsValid) {
-          emailInputRef.current.focus();
-          setError('Please enter a valid email address');
-        } else {
-          passwordInputRef.current.focus();
-          setError('Length of password must be greater than 8');
+        if (res.data.status === 'success') {
+          showAlert('success', 'Logged in successfully');
         }
-      } catch (err) {
-        showAlert('error', err.response.data.message);
+      } else if (!emailIsValid) {
+        emailInputRef.current.focus();
+        setError('Please enter a valid email address');
+      } else {
+        passwordInputRef.current.focus();
+        setError('Length of password must be greater than 8');
       }
+    } catch (err) {
+      showAlert('error', err.response.data.message);
+    }
 
-      // setIsLoading(false);
-    },
-    [emailIsValid, emailState.value, formIsValid, passwordState.value]
-  );
+    // setIsLoading(false);
+  };
 
   const getLogin = () => {
     navigate('/signup');
@@ -201,7 +195,7 @@ const LoginForm = (props) => {
             </button>
           </p>
           <p>
-            <a href="#modal" onClick={() => setShowForgot(true)}>
+            <a href="/forgotPassword" onClick={() => setShowForgot(true)}>
               Forgot Password?
             </a>
           </p>
@@ -213,7 +207,7 @@ const LoginForm = (props) => {
             <a href="#google">
               <i className="fa-brands fa-google"></i>
             </a>
-            <a href="#modal" onClick={() => setShowOtp(true)}>
+            <a href="/sendOtp" onClick={() => setShowOtp(true)}>
               <i className="fa-solid fa-envelope"></i>
             </a>
           </div>
