@@ -1,7 +1,8 @@
 import Sidebar from '../../Sidebar/Sidebar';
 import DashboardNavbar from '../../Header/DashboardNavbar';
-import InsBasicForm from './InsBasicForm';
-// import UniDetailForm from "./UniDetailForm";
+// import InsBasicForm from './InsBasicForm';
+// import InsDetailForm from './InsDetailForm';
+import InsDocApproval from './InsDocApproval';
 
 const position = {
   position: 'relative',
@@ -22,15 +23,16 @@ const InstituteDashboard = (props) => {
     <div style={position}>
       <Sidebar icons={icons} disabled={disabled} enabled={enabled} />
       <DashboardNavbar />
-      <div className="university-dashboard">
-        <h1 className="university-dashboard__welcome">
+      <div className="institute-dashboard">
+        <h1 className="institute-dashboard__welcome">
           Hey there, welcome back
         </h1>
-        <h2 className="university-dashboard__header">
-          Tell us about your <span>University...</span>
+        <h2 className="institute-dashboard__header">
+          Tell us about your <span>Institute...</span>
         </h2>
-        <InsBasicForm />
-        {/* <UniDetailForm /> */}
+        {/* <InsBasicForm /> */}
+        {/* <InsDetailForm /> */}
+        <InsDocApproval />
       </div>
     </div>
   );

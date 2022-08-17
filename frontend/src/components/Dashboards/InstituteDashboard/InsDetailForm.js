@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Input from "./../UI/Input/Input";
-import InputGroup from "./InputGroup";
+import { useState } from 'react';
+import Input from '../../UI/Input/Input';
+import InputGroup from './InputGroup';
 
-const UniDetailForm = (props) => {
+const InsDetailForm = (props) => {
   const [noOfDepartments, setNoOfDepartments] = useState(0);
   const [inputList, setInputList] = useState([]);
 
@@ -20,12 +20,12 @@ const UniDetailForm = (props) => {
   };
 
   return (
-    <div className="university-detail__form">
-      <div className="university-detail__form-group">
+    <div className="institute-detail__form">
+      <div className="institute-detail__form-group">
         <Input
           id="no_of_departments"
           label={
-            <span className="university-detail__label">No. of Departments</span>
+            <span className="institute-detail__label">No. of Departments</span>
           }
           type="number"
           name="no_of_departments"
@@ -37,7 +37,7 @@ const UniDetailForm = (props) => {
         />
 
         <button
-          className="university-detail__enter"
+          className="institute-detail__enter"
           type="button"
           onClick={createInputHandler}
         >
@@ -49,8 +49,8 @@ const UniDetailForm = (props) => {
         return inputGroup;
       })}
 
-      <div className="university-detail__submit">
-        <button type="button" className="btn university-detail__btn">
+      <div className="institute-detail__submit">
+        <button type="button" className="btn institute-detail__btn">
           Submit
         </button>
       </div>
@@ -58,4 +58,4 @@ const UniDetailForm = (props) => {
   );
 };
 
-export default UniDetailForm;
+export default InsDetailForm;

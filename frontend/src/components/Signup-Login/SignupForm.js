@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useContext,
 } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Redirect } from 'react-router-dom';
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
 import { showAlert } from '../../utils/alerts';
@@ -148,7 +148,26 @@ const SignupForm = () => {
 
         if (res.data.status === 'success') {
           showAlert('success', 'User registered successfully');
-          console.log(res);
+
+          const user = res.data.data.user.user;
+
+          if (user === 'student') {
+            navigate('/student-dashboard');
+          } else if (user === 'alumni') {
+            navigate('/alumni-dashboard');
+          } else if (user === 'industry') {
+            navigate('/industry-dashboard');
+          } else if (user === 'institute') {
+            navigate('/institute-dashboard');
+          } else if (user === 'university') {
+            navigate('/university-dashboard');
+          } else if (user === 'aicte') {
+            // navigate('/aicte-dashboard')
+            console.log('Show Aicte Dashboard');
+          } else {
+            showAlert('error', 'Invalid user type, Please try again.');
+            Redirect('/login-select');
+          }
         }
       } else if (!emailIsValid) {
         emailInputRef.current.focus();

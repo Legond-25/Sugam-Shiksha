@@ -1,4 +1,4 @@
-import img_1 from "./../../../assets/images/company3.png";
+import img_1 from '../../../../assets/images/company3.png';
 
 const IndustryForm = (props) => {
   return (
@@ -10,7 +10,7 @@ const IndustryForm = (props) => {
       </h1>
       <section className="industry_form" id="industry_form">
         <div className="image">
-          <img src={img_1} alt="Industry form image" />
+          <img src={img_1} alt="Industry form" />
         </div>
 
         <div className="row">

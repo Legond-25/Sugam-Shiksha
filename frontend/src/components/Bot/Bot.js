@@ -1,7 +1,7 @@
-import alumni_bot from "./../../assets/images/alumni_dash.png";
-import alumni_bot_2 from "./../../assets/images/alumni_bot_2 .png";
+import alumni_bot from './../../assets/images/alumni_dash.png';
+import alumni_bot_2 from './../../assets/images/alumni_bot_2.png';
 
-import BotOptions from "./BotOption";
+import BotOptions from './BotOption';
 
 const Bot = (props) => {
   return (
@@ -10,7 +10,7 @@ const Bot = (props) => {
         <div className="image">
           <img
             src={alumni_bot}
-            alt="Alumni Vector Image"
+            alt="Alumni Vector"
             className="wrapper_img"
           ></img>
         </div>
@@ -32,7 +32,7 @@ const Bot = (props) => {
         <div className="alumni_bot-right">
           <img
             src={alumni_bot_2}
-            alt="Alumni Vector Image"
+            alt="Alumni Vector"
             className="alumni_bot_image-2"
           ></img>
         </div>

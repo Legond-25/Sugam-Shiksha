@@ -1,4 +1,4 @@
-import img_1 from "./../../../assets/images/alumni_form.png";
+import img_1 from '../../../../assets/images/alumni_form.png';
 
 const AlumniForm = (props) => {
   return (
@@ -53,7 +53,7 @@ const AlumniForm = (props) => {
             </form>
           </div>
           <div className="image">
-            <img src={img_1} alt="Alumni Form Image" />
+            <img src={img_1} alt="Alumni Form" />
           </div>
         </div>
       </section>

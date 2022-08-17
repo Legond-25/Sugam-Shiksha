@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Redirect } from 'react-router-dom';
 
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
@@ -111,6 +111,26 @@ const LoginForm = (props) => {
 
         if (res.data.status === 'success') {
           showAlert('success', 'Logged in successfully');
+
+          const user = res.data.data.user.user;
+
+          if (user === 'student') {
+            navigate('/student-dashboard');
+          } else if (user === 'alumni') {
+            navigate('/alumni-dashboard');
+          } else if (user === 'industry') {
+            navigate('/industry-dashboard');
+          } else if (user === 'institute') {
+            navigate('/institute-dashboard');
+          } else if (user === 'university') {
+            navigate('/university-dashboard');
+          } else if (user === 'aicte') {
+            // navigate('/aicte-dashboard')
+            console.log('Show Aicte Dashboard');
+          } else {
+            showAlert('error', 'Invalid user type, Please try again.');
+            Redirect('/login-select');
+          }
         }
       } else if (!emailIsValid) {
         emailInputRef.current.focus();

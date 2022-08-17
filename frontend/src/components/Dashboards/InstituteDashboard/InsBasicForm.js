@@ -17,154 +17,164 @@ const showDropdownHandler = (event) => {
   event.target.nextSibling.style.display = 'block';
 };
 
-const UniBasicForm = (props) => {
+const InsBasicForm = (props) => {
   return (
-    <form className="university-basic__form">
-      <div className="university-basic__form-group">
+    <form className="institute-basic__form">
+      <div className="institute-basic__form-group">
         <Input
-          id="university_name"
-          label={
-            <span className="university-basic__label">University Name</span>
-          }
+          id="institute_name"
+          label={<span className="institute-basic__label">Institute Name</span>}
           type="text"
-          name="university_name"
-          placeholder="University Name"
+          name="institute_name"
+          placeholder="Institute Name"
           required
         />
       </div>
 
-      <div className="university-basic__form-group">
+      <div className="institute-basic__form-group">
         <Input
-          id="university_code"
-          label={
-            <span className="university-basic__label">University Code</span>
-          }
+          id="institute_code"
+          label={<span className="institute-basic__label">Institute Code</span>}
           type="text"
-          name="university_code"
-          placeholder="University Code"
+          name="institute_code"
+          placeholder="institute Code"
           required
         />
       </div>
 
-      <div className="university-basic__form-group">
-        <label htmlFor="dropdown-toggle" className="university-basic__label">
-          University Type
+      <div className="institute-basic__form-group">
+        <label htmlFor="dropdown-toggle" className="institute-basic__label">
+          Institute Type
         </label>
         <button
           type="button"
           id="dropdown-toggle"
-          className="university-basic__toggle round"
+          className="institute-basic__toggle round"
           onClick={showDropdownHandler}
         >
           --- Please Select One ---
         </button>
 
-        <div className="university-basic__dropdown">
+        <div className="institute-basic__dropdown">
           <Input
-            id="central_university"
+            id="government_institute"
             label={
-              <span className="university-basic__radio-label">
-                Central University
+              <span className="institute-basic__radio-label">
+                Government Institute
               </span>
             }
             labelClick={onClickDropdownHandler}
             type="radio"
-            name="university_type"
-            value="Central University"
+            name="institute_type"
+            value="Government institute"
             required
             hidden
           />
 
           <Input
-            id="state_university"
+            id="non-government_institute"
             label={
-              <span className="university-basic__radio-label">
-                State University
+              <span className="institute-basic__radio-label">
+                Non-Government Institute
               </span>
             }
             labelClick={onClickDropdownHandler}
             type="radio"
-            name="university_type"
-            value="State University"
-            required
-            hidden
-          />
-
-          <Input
-            id="deemed_university"
-            label={
-              <span className="university-basic__radio-label">
-                Deemed University
-              </span>
-            }
-            labelClick={onClickDropdownHandler}
-            type="radio"
-            name="university_type"
-            value="Deemed University"
-            required
-            hidden
-          />
-
-          <Input
-            id="institutes_under_national_importance"
-            label={
-              <span className="university-basic__radio-label">
-                Institutes Under National Importance
-              </span>
-            }
-            labelClick={onClickDropdownHandler}
-            type="radio"
-            name="university_type"
-            value="Institutes Under National Importance"
+            name="institute_type"
+            value="Non-Government Institute"
             required
             hidden
           />
         </div>
       </div>
 
-      <div className="university-basic__form-group">
+      <div className="institute-basic__form-group">
         <Input
-          id="university_address"
+          id="institute_code"
           label={
-            <span className="university-basic__label">University Address</span>
+            <span className="institute-basic__label">Institute Address</span>
           }
           type="text"
-          name="university_address"
-          placeholder="University Address"
+          name="institute_address"
+          placeholder="Institute Address"
           required
         />
       </div>
 
-      <div className="university-basic__form-group">
-        <Input
-          id="university_head"
-          label={
-            <span className="university-basic__label">University Head</span>
-          }
-          type="text"
-          name="university_head"
-          placeholder="University Head"
-          required
-        />
+      <div className="institute-basic__form-group">
+        <label htmlFor="dropdown-toggle" className="institute-basic__label">
+          Funding Status
+        </label>
+        <button
+          type="button"
+          id="dropdown-toggle"
+          className="institute-basic__toggle round"
+          onClick={showDropdownHandler}
+        >
+          --- Please Select One ---
+        </button>
+
+        <div className="institute-basic__dropdown">
+          <Input
+            id="aided_institute"
+            label={<span className="institute-basic__radio-label">Aided</span>}
+            labelClick={onClickDropdownHandler}
+            type="radio"
+            name="institute_type"
+            value="Aided institute"
+            required
+            hidden
+          />
+
+          <Input
+            id="unaided_institute"
+            label={
+              <span className="institute-basic__radio-label">Un-Aided</span>
+            }
+            labelClick={onClickDropdownHandler}
+            type="radio"
+            name="institute_type"
+            value="Un-Aided Institute"
+            required
+            hidden
+          />
+        </div>
       </div>
 
-      <div className="university-basic__form-group">
+      <div className="institute-basic__form-group">
         <Input
-          id="no_affiliated_institutes"
+          id="institute_head"
           label={
-            <span className="university-basic__label">
-              No. of Affiliated Institutes
+            <span className="institute-basic__label">
+              Name of the Principal
             </span>
           }
-          type="number"
-          name="no_affiliated_institutes"
-          placeholder="No. of Affiliated Institutes"
+          type="text"
+          name="institute_head"
+          placeholder="Institute Head"
           required
         />
       </div>
 
-      <div className="university-basic__submit">
-        <button type="submit" className="btn university-basic__btn">
+      <div className="institute-basic__form-group ">
+        <label htmlFor="dropdown-toggle" className="institute-basic__label">
+          Autonomy Status
+        </label>
+
+        <div className="institute-basic__radio">
+          <label for="true" class="auto_check">
+            Yes
+          </label>
+          <input type="radio" id="true" name="status" />
+          <label for="false" class="auto_check">
+            No
+          </label>
+          <input type="radio" id="false" name="status" />
+        </div>
+      </div>
+
+      <div className="institute-basic__submit">
+        <button type="submit" className="btn institute-basic__btn">
           Next
           <i className="fa-solid fa-arrow-right-long"></i>
         </button>
@@ -173,4 +183,4 @@ const UniBasicForm = (props) => {
   );
 };
 
-export default UniBasicForm;
+export default InsBasicForm;

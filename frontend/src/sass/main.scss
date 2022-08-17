@@ -7,10 +7,17 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/alumniform";
+@import "components/bot";
+@import "components/botoption";
 @import "components/btn";
 @import "components/card";
 @import "components/category";
+@import "components/industryform";
 @import "components/input";
+@import "components/institute-basic-form";
+@import "components/institute-detail-form";
+@import "components/institute-doc-approval";
 @import "components/login-form";
 @import "components/login-type";
 @import "components/modal";
@@ -24,3 +31,5 @@
 
 @import "pages/studentDashboard";
 @import "pages/universityDashboard";
+@import "pages/instituteDashboard";
+@import "pages/alumniDashboard";
