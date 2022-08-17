@@ -36,15 +36,7 @@ const createSendToken = (user, statusCode, req, res) => {
 
 // UserType
 exports.loginUserType = catchAsync(async (req, res) => {
-  const users = [
-    "student",
-    "institute",
-    "industry",
-    "aicte",
-    "alumni",
-    "academic_professional",
-    "admin",
-  ];
+  const users = ["student", "institute", "industry", "university", "aicte"];
   const userLoginType = req.body.user;
 
   if (!users.includes(userLoginType)) {

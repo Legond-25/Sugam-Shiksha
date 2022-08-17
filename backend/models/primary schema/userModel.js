@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
-const crypto = require('crypto');
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 // Creating user schema
 const userSchema = new mongoose.Schema(
@@ -9,55 +9,47 @@ const userSchema = new mongoose.Schema(
     firstName: {
       type: String,
       trim: true,
-      required: ['true', 'Please provide your first name'],
+      required: ["true", "Please provide your first name"],
     },
     lastName: {
       type: String,
       trim: true,
-      required: ['true', 'Please provide your last name'],
+      required: ["true", "Please provide your last name"],
     },
     email: {
       type: String,
       unique: true,
       trim: true,
       lowercase: true,
-      required: ['true', 'Please provide a email address'],
-      validate: [validator.isEmail, 'Please provide a valid email address'],
+      required: ["true", "Please provide a email address"],
+      validate: [validator.isEmail, "Please provide a valid email address"],
     },
     user: {
       type: String,
       enum: {
-        values: [
-          'student',
-          'institute',
-          'industry',
-          'aicte',
-          'alumni',
-          'academic_professional',
-          'admin',
-        ],
-        message: 'The value {VALUE} is not supported',
+        values: ["student", "institute", "industry", "university", "aicte"],
+        message: "The value {VALUE} is not supported",
       },
-      required: [true, 'Please provide a user type'],
+      required: [true, "Please provide a user type"],
     },
     photo: {
       type: String,
-      default: 'default.jpg',
+      default: "default.jpg",
     },
     password: {
       type: String,
-      required: ['true', 'Please provide a password'],
-      minlength: [8, 'Password length must be atleast 8'],
+      required: ["true", "Please provide a password"],
+      minlength: [8, "Password length must be atleast 8"],
       select: false,
     },
     passwordConfirm: {
       type: String,
-      required: [true, 'Please confirm your password'],
+      required: [true, "Please confirm your password"],
       validate: {
         validator: function (el) {
           return el === this.password;
         },
-        message: 'Passwords do not match',
+        message: "Passwords do not match",
       },
     },
     passwordChangedAt: Date,
@@ -73,9 +65,9 @@ const userSchema = new mongoose.Schema(
 );
 
 // Document middleware - Pre hook
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   // Only run this function if password was actually modified
-  if (!this.isModified('password')) return next();
+  if (!this.isModified("password")) return next();
 
   // Hash the password with cost of 12 using (bcrypt)
   this.password = await bcrypt.hash(this.password, 12);
@@ -85,9 +77,9 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-userSchema.pre('save', function (next) {
+userSchema.pre("save", function (next) {
   // Only run this function if password was actually modified
-  if (!this.isModified('password') || this.isNew) return next();
+  if (!this.isModified("password") || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
   next();
@@ -121,12 +113,12 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
-  const resetToken = crypto.randomBytes(32).toString('hex');
+  const resetToken = crypto.randomBytes(32).toString("hex");
 
   this.passwordResetToken = crypto
-    .createHash('sha256')
+    .createHash("sha256")
     .update(resetToken)
-    .digest('hex');
+    .digest("hex");
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
@@ -134,7 +126,7 @@ userSchema.methods.createPasswordResetToken = function () {
 };
 
 // Creating user Model
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 // Exporting User Model
 module.exports = User;
