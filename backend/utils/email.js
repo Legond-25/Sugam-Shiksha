@@ -32,10 +32,13 @@ class SendEmail {
   }
 
   async sendWelcome() {
-    await this.send("welcome", "Welcome to Canteen!");
+    await this.send("welcome", "Welcome to new World of Education !!");
   }
   async sendPasswordReset() {
     await this.send("Your password reset token (valid for only 10 mins).");
+  }
+  async sendOtp() {
+    await this.send("Your otp is (valid for only 10 mins).");
   }
 }
 

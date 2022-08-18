@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Create university Schema
 const universitySchema = mongoose.Schema(
   {
     universityAdmin: {
       type: mongoose.Schema.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
     universityName: {
       type: String,
@@ -22,12 +22,12 @@ const universitySchema = mongoose.Schema(
       // required: [true, 'Please provide the type of university'],
       enum: {
         values: [
-          'Central University',
-          'State University',
-          'Deemed University',
-          'Institutes Under National Importance',
+          "Central University",
+          "State University",
+          "Deemed University",
+          "Institutes Under National Importance",
         ],
-        message: 'The value {VALUE} is not supported',
+        message: "The value {VALUE} is not supported",
       },
     },
     universityCode: {
@@ -50,7 +50,7 @@ const universitySchema = mongoose.Schema(
       institutes: [
         {
           type: mongoose.Schema.ObjectId,
-          ref: 'Institute',
+          ref: "Institute",
         },
       ],
       noOfInstitutes: Number,
@@ -61,33 +61,38 @@ const universitySchema = mongoose.Schema(
         // required: [true, 'Please provide the institute approval docs'],
       },
     ],
-    departmentsInfo: {
-      noOfDepartments: {
-        type: Number,
-        trim: true,
-        // required: [true, 'Please provide the number of departments'],
-      },
-      nameOfDepartments: [
-        {
+    noOfDepartments: {
+      type: Number,
+      trim: true,
+      // required: [true, 'Please provide the number of departments'],
+    },
+    departmentsInfo: [
+      {
+        categoryOfDepartment: {
+          type: String,
+          trim: true,
+        },
+        nameOfDepartment: {
           type: String,
           trim: true,
           // required: [true, 'Please provide the name of departments'],
         },
-      ],
-      nameOfHods: [
-        {
+
+        nameOfHod: {
           type: String,
           trim: true,
           // required: [true, "Please provide the name of HOD's"],
         },
-      ],
-      syllabusOfDepartments: [
-        {
-          type: String,
-          // required: [true, 'Please provide the syllabus of departments'],
-        },
-      ],
-    },
+
+        syllabusOfDepartment: [
+          {
+            type: String,
+            // required: [true, 'Please provide the syllabus of departments'],
+          },
+        ],
+      },
+    ],
+
     formFilled: {
       basic: {
         type: Boolean,
@@ -114,18 +119,18 @@ const universitySchema = mongoose.Schema(
 // Query middleware
 universitySchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'universityAdmin',
-    select: '-__v -passwordChangedAt -user -photo',
+    path: "universityAdmin",
+    select: "-__v -passwordChangedAt -user -photo",
   }).populate({
-    path: 'institutes',
-    select: 'instituteName instituteCode',
+    path: "institutes",
+    select: "instituteName instituteCode",
   });
 
   next();
 });
 
 // Creating university model
-const University = mongoose.model('University', universitySchema);
+const University = mongoose.model("University", universitySchema);
 
 // Exporting university model
 module.exports = University;
