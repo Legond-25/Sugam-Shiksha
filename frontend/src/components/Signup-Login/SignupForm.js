@@ -178,6 +178,12 @@ const SignupForm = () => {
       }
     } catch (err) {
       showAlert('error', err.response.data.message);
+      if (
+        err.response.data.message ===
+        'Invalid user type. Please enter valid user type'
+      ) {
+        navigate('/login-select');
+      }
     }
 
     // setIsLoading(false);

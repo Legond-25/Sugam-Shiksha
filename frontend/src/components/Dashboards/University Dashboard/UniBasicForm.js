@@ -1,4 +1,9 @@
+import { useState } from 'react';
+
 import Input from '../../UI/Input/Input';
+
+import { sendPatchRequest } from '../../../utils/sendHttp';
+import { showAlert } from '../../../utils/alerts';
 
 const onClickDropdownHandler = (event) => {
   const value = event.target.innerHTML;
@@ -18,8 +23,116 @@ const showDropdownHandler = (event) => {
 };
 
 const UniBasicForm = (props) => {
+  const [formData, setFormData] = useState({
+    university_name: '',
+    university_code: '',
+    university_type: '',
+    university_address: '',
+    university_head: '',
+    no_affiliated_institutes: '',
+  });
+
+  const inputChangeHandler = (event) => {
+    event.preventDefault();
+
+    const value = event.target.value;
+    const name = event.target.name;
+
+    setFormData((prevState) => {
+      if (name === 'university_name') {
+        return {
+          university_name: value,
+          university_code: prevState.university_code,
+          university_type: prevState.university_type,
+          university_address: prevState.university_address,
+          university_head: prevState.university_head,
+          no_affiliated_institutes: prevState.no_affiliated_institutes,
+        };
+      } else if (name === 'university_code') {
+        return {
+          university_name: prevState.university_name,
+          university_code: value,
+          university_type: prevState.university_type,
+          university_address: prevState.university_address,
+          university_head: prevState.university_head,
+          no_affiliated_institutes: prevState.no_affiliated_institutes,
+        };
+      } else if (name === 'university_type') {
+        return {
+          university_name: prevState.university_name,
+          university_code: prevState.university_code,
+          university_type: value,
+          university_address: prevState.university_address,
+          university_head: prevState.university_head,
+          no_affiliated_institutes: prevState.no_affiliated_institutes,
+        };
+      } else if (name === 'university_address') {
+        return {
+          university_name: prevState.university_name,
+          university_code: prevState.university_code,
+          university_type: prevState.university_type,
+          university_address: value,
+          university_head: prevState.university_head,
+          no_affiliated_institutes: prevState.no_affiliated_institutes,
+        };
+      } else if (name === 'university_head') {
+        return {
+          university_name: prevState.university_name,
+          university_code: prevState.university_code,
+          university_type: prevState.university_type,
+          university_address: prevState.university_address,
+          university_head: value,
+          no_affiliated_institutes: prevState.no_affiliated_institutes,
+        };
+      } else {
+        return {
+          university_name: prevState.university_name,
+          university_code: prevState.university_code,
+          university_type: prevState.university_type,
+          university_address: prevState.university_address,
+          university_head: prevState.university_head,
+          no_affiliated_institutes: value,
+        };
+      }
+    });
+  };
+
+  const submitHandler = async (event) => {
+    try {
+      event.preventDefault();
+
+      const data = {
+        universityName: formData.university_name,
+        universityCode: formData.university_code,
+        universityType: formData.university_type,
+        universityAddress: formData.university_address,
+        universityHead: formData.university_head,
+        noAffiliatedInstitutes: formData.no_affiliated_institutes,
+        formFilled: {
+          basic: true,
+        },
+      };
+
+      const res = await sendPatchRequest(
+        `/api/v1/university/${props.id}`,
+        data
+      );
+
+      if (res.data.status === 'success') {
+        showAlert('success', 'Basic information form submitted');
+        props.setFormFilled({
+          basic: true,
+          detailed: false,
+          docs: false,
+        });
+      }
+    } catch (err) {
+      showAlert('error', err.response.data.message);
+    }
+  };
+
   return (
-    <form className="university-basic__form">
+    <form className="university-basic__form" onSubmit={submitHandler}>
       <div className="university-basic__form-group">
         <Input
           id="university_name"
@@ -30,6 +143,8 @@ const UniBasicForm = (props) => {
           name="university_name"
           placeholder="University Name"
           required
+          value={formData.university_name}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -43,6 +158,8 @@ const UniBasicForm = (props) => {
           name="university_code"
           placeholder="University Code"
           required
+          value={formData.university_code}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -71,8 +188,8 @@ const UniBasicForm = (props) => {
             type="radio"
             name="university_type"
             value="Central University"
-            required
             hidden
+            onChange={inputChangeHandler}
           />
 
           <Input
@@ -86,8 +203,8 @@ const UniBasicForm = (props) => {
             type="radio"
             name="university_type"
             value="State University"
-            required
             hidden
+            onChange={inputChangeHandler}
           />
 
           <Input
@@ -101,8 +218,8 @@ const UniBasicForm = (props) => {
             type="radio"
             name="university_type"
             value="Deemed University"
-            required
             hidden
+            onChange={inputChangeHandler}
           />
 
           <Input
@@ -116,8 +233,8 @@ const UniBasicForm = (props) => {
             type="radio"
             name="university_type"
             value="Institutes Under National Importance"
-            required
             hidden
+            onChange={inputChangeHandler}
           />
         </div>
       </div>
@@ -132,6 +249,8 @@ const UniBasicForm = (props) => {
           name="university_address"
           placeholder="University Address"
           required
+          value={formData.university_address}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -145,6 +264,8 @@ const UniBasicForm = (props) => {
           name="university_head"
           placeholder="University Head"
           required
+          value={formData.university_head}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -160,6 +281,8 @@ const UniBasicForm = (props) => {
           name="no_affiliated_institutes"
           placeholder="No. of Affiliated Institutes"
           required
+          value={formData.no_affiliated_institutes}
+          onChange={inputChangeHandler}
         />
       </div>
 

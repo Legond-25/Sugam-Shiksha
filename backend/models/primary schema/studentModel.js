@@ -11,28 +11,28 @@ const studentSchema = new mongoose.Schema(
       organizationType: {
         type: String,
         trim: true,
-        required: [true, 'Please provide type of organization'],
+        // required: [true, 'Please provide type of organization'],
       },
       organizationName: {
         type: String,
         trim: true,
-        required: [true, 'Please provide name of organization'],
+        // required: [true, 'Please provide name of organization'],
       },
       organizationAddress: {
         type: String,
         trim: true,
-        required: [true, 'Please provide address of organization'],
+        // required: [true, 'Please provide address of organization'],
       },
     },
     personalInfo: {
       gender: {
         type: String,
         trim: true,
-        required: [true, 'Please provide your gender'],
+        // required: [true, 'Please provide your gender'],
       },
       dob: {
         type: Date,
-        required: [true, 'Please provide your date of birth'],
+        // required: [true, 'Please provide your date of birth'],
       },
     },
     hobbies: [

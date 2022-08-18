@@ -1,13 +1,24 @@
+import { useEffect, useState } from 'react';
+
 import Sidebar from '../../Sidebar/Sidebar';
 import DashboardNavbar from '../../Header/DashboardNavbar';
 import UniBasicForm from './UniBasicForm';
 import UniDetailForm from './UniDetailForm';
+
+import { sendGetRequest } from '../../../utils/sendHttp';
 
 const position = {
   position: 'relative',
 };
 
 const UniversityDashboard = (props) => {
+  const [universityId, setUniversityId] = useState('');
+  const [formFilled, setFormFilled] = useState({
+    basic: false,
+    detailed: false,
+    docs: false,
+  });
+
   const icons = {
     Reports: 'fa-solid fa-chart-pie',
     Schedule: 'fa-solid fa-calendar',
@@ -17,6 +28,22 @@ const UniversityDashboard = (props) => {
 
   const disabled = ['Schedule', 'Target', 'Watchlist'];
   const enabled = ['Reports'];
+
+  const fetchUniversity = async () => {
+    const res = await sendGetRequest('/api/v1/university/getUniOfUser');
+
+    setUniversityId(res.data.data.data.id);
+
+    setFormFilled(res.data.data.data.formFilled);
+  };
+
+  useEffect(() => {
+    fetchUniversity();
+  }, []);
+
+  const formFilledHandler = (formFilled) => {
+    setFormFilled(formFilled);
+  };
 
   return (
     <div style={position}>
@@ -29,8 +56,12 @@ const UniversityDashboard = (props) => {
         <h2 className="university-dashboard__header">
           Tell us about your <span>University...</span>
         </h2>
-        {/* <UniBasicForm /> */}
-        <UniDetailForm />
+        {!formFilled.basic && (
+          <UniBasicForm id={universityId} setFormFilled={formFilledHandler} />
+        )}
+        {formFilled.basic && !formFilled.detailed && (
+          <UniDetailForm id={universityId} setFormFilled={formFilledHandler} />
+        )}
       </div>
     </div>
   );

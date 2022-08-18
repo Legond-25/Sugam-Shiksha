@@ -8,6 +8,8 @@ import Input from './../UI/Input/Input';
 import ForgotPassword from './ForgotPassword';
 import OtpModal from './OtpModal';
 
+// import loader from './../../assets/gifs/bookLoader.gif';
+
 const emailReducer = (state, action) => {
   if (action.type === 'USER_INPUT') {
     return { value: action.val, isValid: validator.isEmail(state.value) };
@@ -39,7 +41,7 @@ const LoginForm = (props) => {
   const [showOtp, setShowOtp] = useState(false);
   const [error, setError] = useState(null);
   const [isPassVisible, setPassVisible] = useState('visibility_off');
-  // const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Declared Navigate
   let navigate = useNavigate();
@@ -96,7 +98,7 @@ const LoginForm = (props) => {
   // Defined Submit Handler
   const submitHandler = async (event) => {
     event.preventDefault();
-    // setIsLoading(true);
+    setIsLoading(true);
     setError(null);
     try {
       if (formIsValid) {
@@ -138,9 +140,15 @@ const LoginForm = (props) => {
       }
     } catch (err) {
       showAlert('error', err.response.data.message);
+      if (
+        err.response.data.message ===
+        'Invalid user type. Please enter valid user type'
+      ) {
+        navigate('/login-select');
+      }
     }
 
-    // setIsLoading(false);
+    setIsLoading(false);
   };
 
   const getLogin = () => {
@@ -149,6 +157,7 @@ const LoginForm = (props) => {
 
   return (
     <>
+      {/* {isLoading && <img src={loader} alt="Loader" />} */}
       <form className="login__form" onSubmit={submitHandler}>
         <div className="login__form--header">
           <p>Login</p>
