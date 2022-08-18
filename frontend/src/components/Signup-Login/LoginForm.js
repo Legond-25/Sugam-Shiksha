@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer, useRef } from 'react';
-import { useNavigate, Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import validator from 'validator';
 import { sendPostRequest } from '../../utils/sendHttp';
@@ -104,10 +104,7 @@ const LoginForm = (props) => {
           email: emailState.value,
           password: passwordState.value,
         };
-        const res = await sendPostRequest(
-          'http://localhost:8080/api/v1/auth/login',
-          data
-        );
+        const res = await sendPostRequest('/api/v1/auth/login', data);
 
         if (res.data.status === 'success') {
           showAlert('success', 'Logged in successfully');
@@ -129,7 +126,7 @@ const LoginForm = (props) => {
             console.log('Show Aicte Dashboard');
           } else {
             showAlert('error', 'Invalid user type, Please try again.');
-            Redirect('/login-select');
+            navigate('/login-select');
           }
         }
       } else if (!emailIsValid) {

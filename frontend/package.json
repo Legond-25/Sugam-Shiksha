@@ -34,6 +34,7 @@
     "compress:css": "node-sass src/css/style.prefix.css src/css/style.main.css --output-style compressed",
     "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
+  "proxy": "http://localhost:8080",
   "eslintConfig": {
     "extends": [
       "react-app",

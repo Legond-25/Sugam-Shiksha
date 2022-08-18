@@ -69,17 +69,13 @@ const LoginType = (props) => {
 
       authCtx.loginUserType(user);
 
-      const res = await sendPostRequest(
-        'http://localhost:8080/api/v1/auth/loginUserType',
-        data
-      );
+      const res = await sendPostRequest('/api/v1/auth/loginUserType', data);
 
       if (res.data.status === 'success') {
         showAlert('success', 'You can proceed towards login');
         navigate('/login');
       }
     } catch (err) {
-      console.log(err);
       showAlert('error', err);
     }
   };
