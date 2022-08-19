@@ -1,12 +1,12 @@
-import Modal from '../../UI/Modal/Modal';
-import Input from '../../UI/Input/Input';
+import Modal from "../../UI/Modal/Modal";
+import Input from "../../UI/Input/Input";
 import {
   sendPatchRequest,
   sendUploadRequest,
   sendPostRequest,
-} from '../../../utils/sendHttp';
-import { showAlert } from '../../../utils/alerts';
-import { useState } from 'react';
+} from "../../../utils/sendHttp";
+import { showAlert } from "../../../utils/alerts";
+import { useState } from "react";
 
 const DepartmentModal = (props) => {
   const [file_1, setFile_1] = useState(null);
@@ -40,14 +40,14 @@ const DepartmentModal = (props) => {
       const formData = new FormData();
 
       files.forEach((file) => {
-        formData.append('syllabus', file);
+        formData.append("syllabus", file);
       });
 
       const data = {
         nameOfDepartment: props.name,
         nameOfHod: props.hod,
         categoryOfDepartment: props.category,
-        syllabusOfDepartment: formData,
+        syllabusOfDepartment: formData.get("syllabus"),
       };
 
       // const res = await sendPatchRequest(
@@ -57,14 +57,14 @@ const DepartmentModal = (props) => {
 
       const res = await sendPostRequest(
         `/api/v1/university/${props.userId}/uploadSyllabus`,
-        formData
+        data
       );
 
-      if (res.data.status === 'success') {
-        showAlert('success', 'Department addedd successfully');
+      if (res.data.status === "success") {
+        showAlert("success", "Department addedd successfully");
       }
     } catch (err) {
-      showAlert('error', err.response.data.message);
+      showAlert("error", err.response.data.message);
     }
   };
 

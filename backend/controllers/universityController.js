@@ -1,13 +1,13 @@
-const aws = require('aws-sdk');
-const multer = require('multer');
-const multerS3 = require('multer-s3');
-const uuid = require('uuid').v4;
-const path = require('path');
+const aws = require("aws-sdk");
+const multer = require("multer");
+const multerS3 = require("multer-s3");
+const uuid = require("uuid").v4;
+const path = require("path");
 
-const AppError = require('../utils/appError');
-const University = require('./../models/primary schema/universityModel');
-const catchAsync = require('./../utils/catchAsync');
-const factory = require('./handlerFactory');
+const AppError = require("../utils/appError");
+const University = require("./../models/primary schema/universityModel");
+const catchAsync = require("./../utils/catchAsync");
+const factory = require("./handlerFactory");
 
 exports.createUniversity = catchAsync(async (req, res, next) => {
   req.body.universityAdmin = req.user.id;
@@ -15,7 +15,7 @@ exports.createUniversity = catchAsync(async (req, res, next) => {
   const newUniversity = await University.create(req.body);
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
       data: newUniversity,
     },
@@ -26,19 +26,19 @@ exports.getUniversityOfUser = catchAsync(async (req, res, next) => {
   const universityAdmin = req.user.id;
 
   if (!universityAdmin) {
-    return next(new AppError('You are not allowed to access this page', 400));
+    return next(new AppError("You are not allowed to access this page", 400));
   }
 
   const universityData = await University.findOne({ universityAdmin });
 
   if (!universityData) {
     return next(
-      new AppError('A document with that ID could not be found', 404)
+      new AppError("A document with that ID could not be found", 404)
     );
   }
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
       data: universityData,
     },
@@ -53,13 +53,13 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: 'ss-project',
+    bucket: "ss-project",
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
     key: (req, file, cb) => {
       const suffix = path.extname(file.originalname);
-      const prefix = 'First-Year';
+      const prefix = "First-Year";
       console.log(prefix);
       // const folderName = req.body.universityName;
       cb(null, `${prefix}-${uuid()}${suffix}`);
@@ -67,26 +67,23 @@ const upload = multer({
   }),
 });
 
-exports.uploadS3 = upload.single('syllabus');
+exports.uploadS3 = upload.array("syllabus", 4);
 
 exports.uploadSyllabus = catchAsync(async (req, res, next) => {
-  console.log(req.files);
-
+  console.log(req.body);
+  const files = req.files;
+  console.log(req.body.syllabusOfDepartment.files);
   // Getting new data
   const id = req.params.id;
-  const {
-    categoryOfDepartment,
-    nameOfDepartment,
-    nameOfHod,
-    syllabusOfDepartment,
-  } = req.body;
+  const { categoryOfDepartment, nameOfDepartment, nameOfHod } = req.body;
+  console.log(categoryOfDepartment);
 
   const newSyllabusOfDepartment = [];
 
-  Object.values(syllabusOfDepartment).map((syllabus) => {
-    // const location = syllabus.location;
-    // const name = syllabus.name;
-    newSyllabusOfDepartment.push(syllabus);
+  console.log(files);
+  files.forEach(async (file) => {
+    const uploaded = file.location;
+    newSyllabusOfDepartment.push(uploaded);
   });
 
   // New Department Info
@@ -107,7 +104,7 @@ exports.uploadSyllabus = catchAsync(async (req, res, next) => {
   );
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
       data: updatedUniversityData,
     },
