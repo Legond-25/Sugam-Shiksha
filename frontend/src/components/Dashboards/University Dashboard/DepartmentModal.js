@@ -1,12 +1,8 @@
-import Modal from "../../UI/Modal/Modal";
-import Input from "../../UI/Input/Input";
-import {
-  sendPatchRequest,
-  sendUploadRequest,
-  sendPostRequest,
-} from "../../../utils/sendHttp";
-import { showAlert } from "../../../utils/alerts";
-import { useState } from "react";
+import Modal from '../../UI/Modal/Modal';
+import Input from '../../UI/Input/Input';
+import { sendPostRequest } from '../../../utils/sendHttp';
+import { showAlert } from '../../../utils/alerts';
+import { useState } from 'react';
 
 const DepartmentModal = (props) => {
   const [file_1, setFile_1] = useState(null);
@@ -14,57 +10,63 @@ const DepartmentModal = (props) => {
   const [file_3, setFile_3] = useState(null);
   const [file_4, setFile_4] = useState(null);
 
+  const [name_1, setName_1] = useState(null);
+  const [name_2, setName_2] = useState(null);
+  const [name_3, setName_3] = useState(null);
+  const [name_4, setName_4] = useState(null);
+
   const file1ChangeHandler = (event) => {
+    setName_1(
+      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+    );
     setFile_1(event.target.files[0]);
   };
-
   const file2ChangeHandler = (event) => {
+    setName_2(
+      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+    );
     setFile_2(event.target.files[0]);
   };
-
   const file3ChangeHandler = (event) => {
+    setName_3(
+      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+    );
     setFile_3(event.target.files[0]);
   };
-
   const file4ChangeHandler = (event) => {
+    setName_4(
+      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+    );
     setFile_4(event.target.files[0]);
   };
 
   const files = [file_1, file_2, file_3, file_4];
+  const names = [name_1, name_2, name_3, name_4];
 
   const submitHandler = async (event) => {
     try {
       event.preventDefault();
-      // console.log(files);
-
       const formData = new FormData();
 
+      formData.append('nameOfDepartment', props.name);
+      formData.append('nameOfHod', props.hod);
+      formData.append('categoryOfDepartment', props.category);
+      formData.append('names', names);
+
       files.forEach((file) => {
-        formData.append("syllabus", file);
+        formData.append('syllabus', file);
       });
-
-      const data = {
-        nameOfDepartment: props.name,
-        nameOfHod: props.hod,
-        categoryOfDepartment: props.category,
-        syllabusOfDepartment: formData.get("syllabus"),
-      };
-
-      // const res = await sendPatchRequest(
-      //   `/api/v1/university/${props.userId}/uploadSyllabus`,
-      //   data
-      // );
 
       const res = await sendPostRequest(
         `/api/v1/university/${props.userId}/uploadSyllabus`,
-        data
+        formData
       );
 
-      if (res.data.status === "success") {
-        showAlert("success", "Department addedd successfully");
+      if (res.data.status === 'success') {
+        showAlert('success', 'Department addedd successfully');
       }
     } catch (err) {
-      showAlert("error", err.response.data.message);
+      showAlert('error', err.response.data.message);
     }
   };
 

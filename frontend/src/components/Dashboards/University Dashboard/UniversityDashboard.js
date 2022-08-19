@@ -13,6 +13,7 @@ const position = {
 
 const UniversityDashboard = (props) => {
   const [universityId, setUniversityId] = useState('');
+  const [univName, setUniversityName] = useState('');
   const [formFilled, setFormFilled] = useState({
     basic: false,
     detailed: false,
@@ -33,7 +34,7 @@ const UniversityDashboard = (props) => {
     const res = await sendGetRequest('/api/v1/university/getUniOfUser');
 
     setUniversityId(res.data.data.data.id);
-
+    setUniversityName(res.data.data.data.universityName);
     setFormFilled(res.data.data.data.formFilled);
   };
 
@@ -60,7 +61,11 @@ const UniversityDashboard = (props) => {
           <UniBasicForm id={universityId} setFormFilled={formFilledHandler} />
         )}
         {formFilled.basic && !formFilled.detailed && (
-          <UniDetailForm id={universityId} setFormFilled={formFilledHandler} />
+          <UniDetailForm
+            id={universityId}
+            setFormFilled={formFilledHandler}
+            name={univName}
+          />
         )}
       </div>
     </div>

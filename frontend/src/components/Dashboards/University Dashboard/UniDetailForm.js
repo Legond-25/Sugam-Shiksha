@@ -15,6 +15,7 @@ const UniDetailForm = (props) => {
             key={i}
             userId={props.id}
             setFormFilled={props.setFormFilled}
+            uniName={props.name}
           />,
         ];
       });

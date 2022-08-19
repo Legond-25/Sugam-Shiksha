@@ -173,6 +173,7 @@ const InputGroup = (props) => {
         hod={hodState.value}
         userId={props.userId}
         setFormFilled={props.setFormFilled}
+        universityName={props.uniName}
       ></DepartmentModal>
     </form>
   );
