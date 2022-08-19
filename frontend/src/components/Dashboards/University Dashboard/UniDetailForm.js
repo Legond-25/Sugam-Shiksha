@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Input from '../../UI/Input/Input';
-import InputGroup from './InputGroup';
+import UniInputGroup from './UniInputGroup';
 
 const UniDetailForm = (props) => {
   const [noOfDepartments, setNoOfDepartments] = useState(0);
@@ -9,7 +9,14 @@ const UniDetailForm = (props) => {
   const createInputHandler = (event) => {
     for (let i = 1; i <= noOfDepartments; i++) {
       setInputList((prevInputList) => {
-        return [...prevInputList, <InputGroup key={i} />];
+        return [
+          ...prevInputList,
+          <UniInputGroup
+            key={i}
+            userId={props.id}
+            setFormFilled={props.setFormFilled}
+          />,
+        ];
       });
     }
   };

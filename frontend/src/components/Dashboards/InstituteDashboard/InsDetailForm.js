@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Input from '../../UI/Input/Input';
-import InputGroup from './InputGroup';
+import InputGroup from './InsInputGroup';
 
 const InsDetailForm = (props) => {
   const [noOfDepartments, setNoOfDepartments] = useState(0);
