@@ -79,7 +79,7 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.uploadDetailS3 = upload.single("identityCard");
+exports.uploadDetailS3 = upload.single("license");
 
 exports.createDetailForm = catchAsync(async (req, res, next) => {
   const file = req.file.location;
