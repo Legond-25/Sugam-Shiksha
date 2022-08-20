@@ -61,11 +61,13 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
 
   const domain = req.body.domain;
   const exp = req.body.experience;
+  const basicStatus = req.body.formFilled;
 
   const data = {
     idCard: file,
     domain: domain,
     experience: exp,
+    formFilled: basicStatus,
   };
 
   const updatedIndustryData = await Industry.findByIdAndUpdate(
@@ -86,12 +88,14 @@ exports.createDetailForm = catchAsync(async (req, res, next) => {
   const companyName = req.body.companyName;
   const companyAddress = req.body.companyAddress;
   const specialization = req.body.specialization;
+  const detailStatus = req.body.formFilled;
 
   const data = {
     companyName: companyName,
     companyAddress: companyAddress,
     specialization: specialization,
     license: file,
+    formFilled: detailStatus,
   };
 
   const updatedIndustryDetailData = await Industry.findByIdAndUpdate(
