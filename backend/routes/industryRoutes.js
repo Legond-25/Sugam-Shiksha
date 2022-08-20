@@ -15,8 +15,13 @@ router.get("/getIndOfUser", industryController.getIndustryOfUser);
 
 router.patch(
   "/:id/createBasicForm",
-  industryController.uploadS3,
+  industryController.uploadBasicS3,
   industryController.createBasicForm
+);
+router.patch(
+  "/:id/createDetailForm",
+  industryController.uploadDetailS3,
+  industryController.createDetailForm
 );
 
 router

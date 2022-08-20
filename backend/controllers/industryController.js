@@ -54,7 +54,7 @@ const upload = multer({
   }),
 });
 
-exports.uploadS3 = upload.single("identityCard");
+exports.uploadBasicS3 = upload.single("identityCard");
 
 exports.createBasicForm = catchAsync(async (req, res, next) => {
   const file = req.file.location;
@@ -76,6 +76,32 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: updatedIndustryData,
+  });
+});
+
+exports.uploadDetailS3 = upload.single("identityCard");
+
+exports.createDetailForm = catchAsync(async (req, res, next) => {
+  const file = req.file.location;
+  const companyName = req.body.companyName;
+  const companyAddress = req.body.companyAddress;
+  const specialization = req.body.specialization;
+
+  const data = {
+    companyName: companyName,
+    companyAddress: companyAddress,
+    specialization: specialization,
+    license: file,
+  };
+
+  const updatedIndustryDetailData = await Industry.findByIdAndUpdate(
+    req.params.id,
+    data
+  );
+
+  res.status(200).json({
+    status: "success",
+    data: updatedIndustryDetailData,
   });
 });
 
