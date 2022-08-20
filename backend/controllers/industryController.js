@@ -3,6 +3,7 @@ const AppError = require("./../utils/appError");
 const catchAsync = require("./../utils/catchAsync");
 const factory = require("./handlerFactory");
 
+const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const uuid = require("uuid").v4;
@@ -48,7 +49,7 @@ const upload = multer({
     },
     key: (req, file, cb) => {
       const suffix = path.extname(file.originalname);
-      cb(null, `${uuid()}${suffix}`);
+      cb(null, `Industry/Icards/${uuid()}${suffix}`);
     },
   }),
 });
@@ -56,7 +57,8 @@ const upload = multer({
 exports.uploadS3 = upload.single("identityCard");
 
 exports.createBasicForm = catchAsync(async (req, res, next) => {
-  const file = req.file;
+  const file = req.file.location;
+
   const domain = req.body.domain;
   const exp = req.body.experience;
 
