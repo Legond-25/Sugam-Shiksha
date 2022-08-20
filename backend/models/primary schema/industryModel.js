@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Creating industry schema
 const industrySchema = mongoose.Schema(
   {
     companyAdmin: {
       type: mongoose.Schema.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
     domain: {
       type: String,
@@ -49,10 +49,6 @@ const industrySchema = mongoose.Schema(
         type: Boolean,
         default: false,
       },
-      docs: {
-        type: Boolean,
-        default: false,
-      },
     },
   },
   {
@@ -65,15 +61,15 @@ const industrySchema = mongoose.Schema(
 // Query middleware -pre hook
 industrySchema.pre(/^find/, function (next) {
   this.populate({
-    path: 'companyAdmin',
-    select: '-__v -passwordChangedAt -user -photo',
+    path: "companyAdmin",
+    select: "-__v -passwordChangedAt -user -photo",
   });
 
   next();
 });
 
 // Creating industry model
-const Industry = mongoose.model('Industry', industrySchema);
+const Industry = mongoose.model("Industry", industrySchema);
 
 // Exporting industry model
 module.exports = Industry;

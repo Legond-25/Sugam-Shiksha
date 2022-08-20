@@ -13,7 +13,7 @@ router
 
 router.get('/getUniOfUser', universityController.getUniversityOfUser);
 
-router.post(
+router.patch(
   '/:id/uploadSyllabus',
   universityController.uploadS3,
   universityController.uploadSyllabus

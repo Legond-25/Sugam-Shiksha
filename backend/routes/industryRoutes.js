@@ -1,20 +1,26 @@
-const express = require('express');
-const industryController = require('../controllers/industryController');
-const authController = require('../controllers/authController');
+const express = require("express");
+const industryController = require("../controllers/industryController");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
 router.use(authController.protect);
 
 router
-  .route('/')
+  .route("/")
   .get(industryController.getAllIndustries)
   .post(industryController.createIndustry);
 
-router.get('/getIndOfUser', industryController.getIndustryOfUser);
+router.get("/getIndOfUser", industryController.getIndustryOfUser);
+
+router.patch(
+  "/:id/createBasicForm",
+  industryController.uploadS3,
+  industryController.createBasicForm
+);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(industryController.getIndustry)
   .patch(industryController.updateIndustry)
   .delete(industryController.deleteIndustry);
