@@ -63,7 +63,7 @@ const DepartmentModal = (props) => {
       );
 
       if (res.data.status === 'success') {
-        showAlert('success', 'Department addedd successfully');
+        showAlert('success', 'Department added successfully');
       }
     } catch (err) {
       showAlert('error', err.response.data.message);

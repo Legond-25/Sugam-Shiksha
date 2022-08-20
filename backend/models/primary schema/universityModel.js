@@ -90,7 +90,6 @@ const universitySchema = mongoose.Schema(
         ],
       },
     ],
-
     formFilled: {
       basic: {
         type: Boolean,

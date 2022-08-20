@@ -1,21 +1,33 @@
-const Industry = require("./../models/primary schema/industryModel");
-const AppError = require("./../utils/appError");
-const catchAsync = require("./../utils/catchAsync");
-const factory = require("./handlerFactory");
+const Industry = require('./../models/primary schema/industryModel');
+const AppError = require('./../utils/appError');
+const catchAsync = require('./../utils/catchAsync');
+const factory = require('./handlerFactory');
 
-exports.getMe = (req, res, next) => {
-  req.params.id = req.user.id;
-  next();
-};
+// Get Industry of Current User
+exports.getIndustryOfUser = catchAsync(async (req, res, next) => {
+  const industryAdmin = req.user.id;
 
-exports.deleteMe = catchAsync(async (req, res, next) => {
-  await Industry.findByIdAndUpdate(req.user._id, { active: false });
+  if (!industryAdmin) {
+    return next(new AppError('You are not allowed to access this page', 400));
+  }
 
-  res.status(204).json({
-    status: "success",
-    data: null,
+  const industryData = await Industry.findOne({ industryAdmin });
+
+  if (!industryData) {
+    return next(
+      new AppError('A document with that ID could not be found', 404)
+    );
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      data: industryData,
+    },
   });
 });
+
+exports.createBasicForm = catchAsync(async (req, res, next) => {});
 
 exports.createIndustry = factory.createOne(Industry);
 

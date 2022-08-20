@@ -9,19 +9,7 @@ const University = require('./../models/primary schema/universityModel');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 
-exports.createUniversity = catchAsync(async (req, res, next) => {
-  req.body.universityAdmin = req.user.id;
-
-  const newUniversity = await University.create(req.body);
-
-  res.status(200).json({
-    status: 'success',
-    data: {
-      data: newUniversity,
-    },
-  });
-});
-
+// Get University of Current User
 exports.getUniversityOfUser = catchAsync(async (req, res, next) => {
   const universityAdmin = req.user.id;
 
@@ -45,11 +33,13 @@ exports.getUniversityOfUser = catchAsync(async (req, res, next) => {
   });
 });
 
+// Creating new s3 instance
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_ID,
   secretAccessKey: process.env.AWS_SECRET,
 });
 
+// Multer Configuration
 const upload = multer({
   storage: multerS3({
     s3,
@@ -92,6 +82,7 @@ const upload = multer({
 
 exports.uploadS3 = upload.array('syllabus', 4);
 
+// Upload Syllabus to AWS and Store link in MongoDb
 exports.uploadSyllabus = catchAsync(async (req, res, next) => {
   const files = req.files;
 
@@ -131,10 +122,10 @@ exports.uploadSyllabus = catchAsync(async (req, res, next) => {
   });
 });
 
+// CRUD Operations
+exports.getUniversity = factory.getOne(University);
 exports.getAllUniversities = factory.getAll(University);
 
-exports.getUniversity = factory.getOne(University);
-
+exports.createUniversity = factory.createOne(University);
 exports.updateUniversity = factory.updateOne(University);
-
 exports.deleteUniversity = factory.deleteOne(University);

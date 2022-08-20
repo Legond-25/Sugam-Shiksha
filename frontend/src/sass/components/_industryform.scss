@@ -1,36 +1,76 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;700&display=swap");
-
-:root {
-  --green: #00e77f;
-  --white: #fff;
-  --light-white: #aaa;
-  --black: #f6f6f6;
-  --light-bg: #f1e1f4;
-}
-
 section {
-  max-width: 1200px;
+  max-width: 120rem;
   margin: 0 auto;
   padding: 2rem;
   display: flex;
 }
 
-.btn {
-  display: inline-block;
-  margin-top: 1rem;
-  border-radius: 5rem;
+.industry-basic {
+  &__btn {
+    padding: 1rem 4rem;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    color: $color-white;
+    margin-top: 4rem;
 
-  background-color: #703e78;
-  cursor: pointer;
+    &:hover {
+      color: $color-white;
+    }
 
-  color: #d6a4de;
-  font-size: 1.8rem;
-  padding: 1rem 3rem;
+    &:hover > i {
+      transform: translateX(5px);
+    }
+
+    & > i {
+      transition: all 0.2s ease;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  &__form-group {
+    position: relative;
+    padding-bottom: 2rem;
+  }
 }
 
-.btn:hover {
-  background-color: #d6a4de;
-  color: var(--black);
+.industry-detail {
+  &__btn {
+    padding: 1rem 4rem;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    color: $color-white;
+    margin-top: 2rem;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &:hover > i {
+      transform: translateX(5px);
+    }
+
+    & > i {
+      transition: all 0.2s ease;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  &__form-group {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .heading {
@@ -40,6 +80,7 @@ section {
   color: var(--white);
   text-transform: uppercase;
   font-family: "Poppins";
+  font-weight: 500;
 }
 
 .heading span {
@@ -60,6 +101,7 @@ section {
 }
 
 .industry_form .row {
+  width: 45%;
   margin-top: -5rem;
   align-items: center;
   flex-wrap: wrap;
@@ -71,34 +113,13 @@ section {
 }
 
 .industry_form .image img {
-  height: 63rem;
-  width: 65rem;
-  margin-left: -5%;
+  width: 50rem;
+  height: auto;
   margin-top: -2rem;
 }
 
 .industry_form .row form {
   flex: 1 1 40rem;
-}
-.industry_form .row form input {
-  border: none;
-}
-
-.industry_form .row form .box {
-  width: 100%;
-  display: block;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 0.5rem;
-  background-color: #e7ebf4;
-  font-size: 1.8rem;
-  color: var(--white);
-  padding: 1.4rem;
-  text-transform: none;
-}
-
-.industry_form .row form span {
-  color: #455a64;
 }
 
 .formT {
@@ -118,29 +139,4 @@ section {
 
 .formT span {
   color: #455a64;
-}
-
-.industry_form .row form span {
-  font-size: 1.6rem;
-  color: var(--light-white);
-}
-
-/* media queries  */
-
-@media (max-width: 991px) {
-  html {
-    font-size: 55%;
-  }
-}
-
-@media (max-width: 450px) {
-  html {
-    font-size: 50%;
-  }
-
-  .heading {
-    font-size: 3rem;
-    margin-right: 50%;
-    color: #703e78;
-  }
 }

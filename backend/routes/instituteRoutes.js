@@ -1,19 +1,22 @@
-const express = require("express");
-const instituteController = require("./../controllers/instituteController");
+const express = require('express');
+const instituteController = require('./../controllers/instituteController');
+const authController = require('./../controllers/authController');
 
 const router = express.Router();
 
+router.use(authController.protect);
+
 router
-  .route("/")
+  .route('/')
   .get(instituteController.getAllInstitutes)
   .post(instituteController.createInstitute);
 
-router.get("/me", instituteController.getMe);
+router.get('/getInsOfUser', instituteController.getInstituteOfUser);
 
-router.delete("/deleteMe", instituteController.deleteMe);
+router.patch('/:instituteId/addDepartment', instituteController.addDepartment);
 
 router
-  .route("/:id")
+  .route('/:id')
   .get(instituteController.getInstitute)
   .patch(instituteController.updateInstitute)
   .delete(instituteController.deleteInstitute);

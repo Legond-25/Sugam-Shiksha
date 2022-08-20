@@ -51,26 +51,24 @@ const instituteSchema = mongoose.Schema(
       trim: true,
       // required: [true, 'Please provide the name of principal'],
     },
-    departmentsInfo: {
-      noOfDepartments: {
-        type: Number,
-        // required: [true, 'Please provide the no. of departments'],
-      },
-      nameOfDepartments: [
-        {
+    noOfDepartments: {
+      type: Number,
+      // required: [true, 'Please provide the no. of departments'],
+    },
+    departmentsInfo: [
+      {
+        nameOfDepartment: {
           type: String,
           trim: true,
           // required: [true, 'Please provide the name of departments'],
         },
-      ],
-      nameOfHods: [
-        {
+        nameOfHod: {
           type: String,
           trim: true,
           // required: [true, "Please provide the name of HOD's"],
         },
-      ],
-    },
+      },
+    ],
     approvalDocs: [
       {
         type: String,
@@ -83,6 +81,20 @@ const instituteSchema = mongoose.Schema(
         // required: [true, 'Please provide the placement statistics'],
       },
     ],
+    formFilled: {
+      basic: {
+        type: Boolean,
+        default: false,
+      },
+      detailed: {
+        type: Boolean,
+        default: false,
+      },
+      docs: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
   {
     timestamps: true,

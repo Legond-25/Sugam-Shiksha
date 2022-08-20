@@ -1,3 +1,8 @@
+import { useState } from 'react';
+
+import { sendPatchRequest } from '../../../utils/sendHttp';
+import { showAlert } from '../../../utils/alerts';
+
 import Input from '../../UI/Input/Input';
 
 const onClickDropdownHandler = (event) => {
@@ -18,8 +23,131 @@ const showDropdownHandler = (event) => {
 };
 
 const InsBasicForm = (props) => {
+  const [formData, setFormData] = useState({
+    institute_name: '',
+    institute_code: '',
+    institute_type: '',
+    institute_address: '',
+    institute_head: '',
+    funding_status: '',
+    autonomy_status: '',
+  });
+
+  const inputChangeHandler = (event) => {
+    event.preventDefault();
+
+    const value = event.target.value;
+    const name = event.target.name;
+
+    setFormData((prevState) => {
+      if (name === 'institute_name') {
+        return {
+          institute_name: value,
+          institute_code: prevState.institute_code,
+          institute_type: prevState.institute_type,
+          institute_address: prevState.institute_address,
+          institute_head: prevState.institute_head,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: prevState.funding_status,
+        };
+      } else if (name === 'institute_code') {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: value,
+          institute_type: prevState.institute_type,
+          institute_address: prevState.institute_address,
+          institute_head: prevState.institute_head,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: prevState.funding_status,
+        };
+      } else if (name === 'institute_type') {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: prevState.institute_code,
+          institute_type: value,
+          institute_address: prevState.institute_address,
+          institute_head: prevState.institute_head,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: prevState.funding_status,
+        };
+      } else if (name === 'institute_address') {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: prevState.institute_code,
+          institute_type: prevState.institute_type,
+          institute_address: value,
+          institute_head: prevState.institute_head,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: prevState.funding_status,
+        };
+      } else if (name === 'institute_head') {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: prevState.institute_code,
+          institute_type: prevState.institute_type,
+          institute_address: prevState.institute_address,
+          institute_head: value,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: prevState.funding_status,
+        };
+      } else if (name === 'autonomy_status') {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: prevState.institute_code,
+          institute_type: prevState.institute_type,
+          institute_address: prevState.institute_address,
+          institute_head: prevState.institute_head,
+          autonomy_status: value,
+          funding_status: prevState.funding_status,
+        };
+      } else {
+        return {
+          institute_name: prevState.institute_name,
+          institute_code: prevState.institute_code,
+          institute_type: prevState.institute_type,
+          institute_address: prevState.institute_address,
+          institute_head: prevState.institute_head,
+          autonomy_status: prevState.autonomy_status,
+          funding_status: value,
+        };
+      }
+    });
+  };
+
+  const submitHandler = async (event) => {
+    try {
+      event.preventDefault();
+
+      const data = {
+        instituteName: formData.institute_name,
+        instituteCode: formData.institute_code,
+        instituteType: formData.institute_type,
+        instituteAddress: formData.institute_address,
+        principal: formData.institute_head,
+        autonomyStatus: formData.autonomy_status,
+        fundingStatus: formData.funding_status,
+        formFilled: {
+          basic: true,
+        },
+      };
+
+      const res = await sendPatchRequest(`/api/v1/institute/${props.id}`, data);
+
+      if (res.data.status === 'success') {
+        showAlert('success', 'Basic information form submitted');
+        props.setFormFilled({
+          basic: true,
+          detailed: false,
+          docs: false,
+        });
+      }
+    } catch (err) {
+      showAlert('error', err.response.data.message);
+    }
+  };
+
   return (
-    <form className="institute-basic__form">
+    <form className="institute-basic__form" onSubmit={submitHandler}>
       <div className="institute-basic__form-group">
         <Input
           id="institute_name"
@@ -28,6 +156,8 @@ const InsBasicForm = (props) => {
           name="institute_name"
           placeholder="Institute Name"
           required
+          value={formData.institute_name}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -39,6 +169,8 @@ const InsBasicForm = (props) => {
           name="institute_code"
           placeholder="institute Code"
           required
+          value={formData.institute_code}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -66,9 +198,9 @@ const InsBasicForm = (props) => {
             labelClick={onClickDropdownHandler}
             type="radio"
             name="institute_type"
-            value="Government institute"
-            required
+            value="government"
             hidden
+            onChange={inputChangeHandler}
           />
 
           <Input
@@ -81,16 +213,16 @@ const InsBasicForm = (props) => {
             labelClick={onClickDropdownHandler}
             type="radio"
             name="institute_type"
-            value="Non-Government Institute"
-            required
+            value="non-government"
             hidden
+            onChange={inputChangeHandler}
           />
         </div>
       </div>
 
       <div className="institute-basic__form-group">
         <Input
-          id="institute_code"
+          id="institute_address"
           label={
             <span className="institute-basic__label">Institute Address</span>
           }
@@ -98,6 +230,8 @@ const InsBasicForm = (props) => {
           name="institute_address"
           placeholder="Institute Address"
           required
+          value={formData.institute_address}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -120,10 +254,10 @@ const InsBasicForm = (props) => {
             label={<span className="institute-basic__radio-label">Aided</span>}
             labelClick={onClickDropdownHandler}
             type="radio"
-            name="institute_type"
-            value="Aided institute"
-            required
+            name="funding_status"
+            value="aided"
             hidden
+            onChange={inputChangeHandler}
           />
 
           <Input
@@ -133,10 +267,10 @@ const InsBasicForm = (props) => {
             }
             labelClick={onClickDropdownHandler}
             type="radio"
-            name="institute_type"
-            value="Un-Aided Institute"
-            required
+            name="funding_status"
+            value="un-aided"
             hidden
+            onChange={inputChangeHandler}
           />
         </div>
       </div>
@@ -153,6 +287,8 @@ const InsBasicForm = (props) => {
           name="institute_head"
           placeholder="Institute Head"
           required
+          value={formData.institute_head}
+          onChange={inputChangeHandler}
         />
       </div>
 
@@ -162,14 +298,26 @@ const InsBasicForm = (props) => {
         </label>
 
         <div className="institute-basic__radio">
-          <label for="true" class="auto_check">
+          <label htmlFor="true" className="auto_check">
             Yes
           </label>
-          <input type="radio" id="true" name="status" />
-          <label for="false" class="auto_check">
+          <input
+            type="radio"
+            id="true"
+            name="autonomy_status"
+            value="true"
+            onChange={inputChangeHandler}
+          />
+          <label htmlFor="false" className="auto_check">
             No
           </label>
-          <input type="radio" id="false" name="status" />
+          <input
+            type="radio"
+            id="false"
+            name="autonomy_status"
+            value="false"
+            onChange={inputChangeHandler}
+          />
         </div>
       </div>
 

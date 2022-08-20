@@ -7,6 +7,10 @@ const industrySchema = mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
+    domain: {
+      type: String,
+      trim: true,
+    },
     companyName: {
       type: String,
       trim: true,
@@ -27,16 +31,28 @@ const industrySchema = mongoose.Schema(
       type: String,
       // required: [true, 'Please provide id card for authentication purposes'],
     },
-    proofDocs: [
-      {
-        type: String,
-        // required: [true, 'Please provide the company registration documents'],
-      },
-    ],
+    license: {
+      type: String,
+      // required: [true, 'Please provide the company registration documents'],
+    },
     experience: {
       type: Number,
       trim: true,
       // required: [true, 'Please provide your years of experience'],
+    },
+    formFilled: {
+      basic: {
+        type: Boolean,
+        default: false,
+      },
+      detailed: {
+        type: Boolean,
+        default: false,
+      },
+      docs: {
+        type: Boolean,
+        default: false,
+      },
     },
   },
   {
