@@ -81,7 +81,21 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.uploadDetailS3 = upload.single("license");
+const Licupload = multer({
+  storage: multerS3({
+    s3,
+    bucket: "ss-project",
+    metadata: (req, file, cb) => {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: (req, file, cb) => {
+      const suffix = path.extname(file.originalname);
+      cb(null, `Industry/Licenses/${uuid()}${suffix}`);
+    },
+  }),
+});
+
+exports.uploadDetailS3 = Licupload.single("license");
 
 exports.createDetailForm = catchAsync(async (req, res, next) => {
   const file = req.file.location;
