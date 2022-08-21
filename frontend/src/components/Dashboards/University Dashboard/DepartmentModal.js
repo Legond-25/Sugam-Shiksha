@@ -1,6 +1,6 @@
 import Modal from '../../UI/Modal/Modal';
 import Input from '../../UI/Input/Input';
-import { sendPostRequest } from '../../../utils/sendHttp';
+import { sendPatchRequest } from '../../../utils/sendHttp';
 import { showAlert } from '../../../utils/alerts';
 import { useState } from 'react';
 
@@ -57,7 +57,7 @@ const DepartmentModal = (props) => {
         formData.append('syllabus', file);
       });
 
-      const res = await sendPostRequest(
+      const res = await sendPatchRequest(
         `/api/v1/university/${props.userId}/uploadSyllabus`,
         formData
       );

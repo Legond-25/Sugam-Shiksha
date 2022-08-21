@@ -53,7 +53,7 @@ const IndustryDashboard = (props) => {
       {formFilled.basic && !formFilled.detailed && (
         <IndustryDetailForm id={industryId} setFormFilled={formFilledHandler} />
       )}
-      {/* <Bot /> */}
+      {formFilled.basic && formFilled.detailed && <Bot />}
     </div>
   );
 };

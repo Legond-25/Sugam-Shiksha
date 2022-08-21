@@ -1,32 +1,32 @@
-const Industry = require("./../models/primary schema/industryModel");
-const AppError = require("./../utils/appError");
-const catchAsync = require("./../utils/catchAsync");
-const factory = require("./handlerFactory");
+const Industry = require('./../models/primary schema/industryModel');
+const AppError = require('./../utils/appError');
+const catchAsync = require('./../utils/catchAsync');
+const factory = require('./handlerFactory');
 
-const aws = require("aws-sdk");
-const multer = require("multer");
-const multerS3 = require("multer-s3");
-const uuid = require("uuid").v4;
-const path = require("path");
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const uuid = require('uuid').v4;
+const path = require('path');
 
 // Get Industry of Current User
 exports.getIndustryOfUser = catchAsync(async (req, res, next) => {
   const industryAdmin = req.user.id;
 
   if (!industryAdmin) {
-    return next(new AppError("You are not allowed to access this page", 400));
+    return next(new AppError('You are not allowed to access this page', 400));
   }
 
   const industryData = await Industry.findOne({ industryAdmin });
 
   if (!industryData) {
     return next(
-      new AppError("A document with that ID could not be found", 404)
+      new AppError('A document with that ID could not be found', 404)
     );
   }
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     data: {
       data: industryData,
     },
@@ -43,7 +43,7 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: "ss-project",
+    bucket: 'ss-project',
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
@@ -54,7 +54,7 @@ const upload = multer({
   }),
 });
 
-exports.uploadBasicS3 = upload.single("identityCard");
+exports.uploadBasicS3 = upload.single('identityCard');
 
 exports.createBasicForm = catchAsync(async (req, res, next) => {
   const file = req.file.location;
@@ -67,7 +67,7 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
     idCard: file,
     domain: domain,
     experience: exp,
-    formFilled: basicStatus,
+    formFilled: { basic: basicStatus },
   };
 
   const updatedIndustryData = await Industry.findByIdAndUpdate(
@@ -76,7 +76,7 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
   );
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     data: updatedIndustryData,
   });
 });
@@ -84,7 +84,7 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
 const Licupload = multer({
   storage: multerS3({
     s3,
-    bucket: "ss-project",
+    bucket: 'ss-project',
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
@@ -95,7 +95,7 @@ const Licupload = multer({
   }),
 });
 
-exports.uploadDetailS3 = Licupload.single("license");
+exports.uploadDetailS3 = Licupload.single('license');
 
 exports.createDetailForm = catchAsync(async (req, res, next) => {
   const file = req.file.location;
@@ -109,7 +109,7 @@ exports.createDetailForm = catchAsync(async (req, res, next) => {
     companyAddress: companyAddress,
     specialization: specialization,
     license: file,
-    formFilled: detailStatus,
+    formFilled: { basic: true, detailed: detailStatus },
   };
 
   const updatedIndustryDetailData = await Industry.findByIdAndUpdate(
@@ -118,7 +118,7 @@ exports.createDetailForm = catchAsync(async (req, res, next) => {
   );
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     data: updatedIndustryDetailData,
   });
 });

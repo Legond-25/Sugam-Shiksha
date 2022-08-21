@@ -10,7 +10,7 @@ const IndustryBasicForm = (props) => {
   const [formData, setFormData] = useState({
     domain: '',
     experience: '',
-    identity_card: '',
+    identity_card: null,
   });
 
   const inputChangeHandler = (event) => {
@@ -33,10 +33,12 @@ const IndustryBasicForm = (props) => {
           identity_card: prevState.identity_card,
         };
       } else {
+        const file = event.target.files[0];
+
         return {
           domain: prevState.domain,
           experience: prevState.experience,
-          identity_card: value,
+          identity_card: file,
         };
       }
     });
@@ -46,23 +48,25 @@ const IndustryBasicForm = (props) => {
     try {
       event.preventDefault();
 
-      const data = {
-        domain: formData.domain,
-        experience: formData.experience,
-        idCard: formData.identity_card,
-        formFilled: {
-          basic: true,
-        },
-      };
+      const data = new FormData();
 
-      const res = await sendPatchRequest(`/api/v1/industry/${props.id}`, data);
+      data.append('domain', formData.domain);
+      data.append('experience', formData.experience);
+      data.append('identityCard', formData.identity_card);
+      data.append('formFilled', true);
+
+      console.log(data.get('formFilled'));
+
+      const res = await sendPatchRequest(
+        `/api/v1/industry/${props.id}/createBasicForm`,
+        data
+      );
 
       if (res.data.status === 'success') {
         showAlert('success', 'Basic information form submitted');
         props.setFormFilled({
           basic: true,
           detailed: false,
-          docs: false,
         });
       }
     } catch (err) {
@@ -129,7 +133,6 @@ const IndustryBasicForm = (props) => {
                 placeholder="Identity Card"
                 required
                 accept="image/*"
-                value={formData.identity_card}
                 onChange={inputChangeHandler}
               />
             </div>
