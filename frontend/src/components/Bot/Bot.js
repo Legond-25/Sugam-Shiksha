@@ -8,11 +8,7 @@ const Bot = (props) => {
     <div>
       <div className="wrapper">
         <div className="image">
-          <img
-            src={alumni_bot}
-            alt="Alumni Vector"
-            className="wrapper_img"
-          ></img>
+          <img src={alumni_bot} alt="Alumni Vector" className="wrapper_img" />
         </div>
         <div className="block">
           <div className="clip_paths-shape"></div>
@@ -34,16 +30,20 @@ const Bot = (props) => {
             src={alumni_bot_2}
             alt="Alumni Vector"
             className="alumni_bot_image-2"
-          ></img>
+          />
         </div>
-        <div className="botOptions_grid">
-          <BotOptions />
-          <BotOptions />
-          <BotOptions />
-          <BotOptions />
-          <BotOptions />
-          <BotOptions />
-        </div>
+        <form className="botOptions_grid">
+          <BotOptions id="option-1" value="Computer Engineering" />
+          <BotOptions id="option-2" value="Mechanical Engineering" />
+          <BotOptions
+            id="option-3"
+            value="Electronics and Telecommunication Engineering"
+          />
+          <BotOptions id="option-4" value="Civil Engineering" />
+          <button type="submit" className="btn bot-submit__btn">
+            Next
+          </button>
+        </form>
       </div>
     </div>
   );

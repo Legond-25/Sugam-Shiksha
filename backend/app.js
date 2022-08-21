@@ -16,7 +16,6 @@ const industryRoutes = require('./routes/industryRoutes');
 const instituteRoutes = require('./routes/instituteRoutes');
 const universityRoutes = require('./routes/universityRoutes');
 const alumniRoutes = require('./routes/alumniRoutes');
-const aluQueRoutes = require('./routes/aluQueRoutes');
 const coursesRoutes = require('./routes/coursesRoutes');
 
 // Create express app
@@ -65,7 +64,6 @@ app.use('/api/v1/industry', industryRoutes);
 app.use('/api/v1/institute', instituteRoutes);
 app.use('/api/v1/university', universityRoutes);
 app.use('/api/v1/alumni', alumniRoutes);
-app.use('/api/v1/aluQue', aluQueRoutes);
 app.use('/api/v1/courses', coursesRoutes);
 
 app.all('*', function (req, res, next) {

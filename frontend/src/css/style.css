@@ -165,7 +165,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 20rem 0;
+  padding: 15rem 0;
   position: relative;
   font-family: "Poppins", sans-serif; }
   .wrapper > .image {
@@ -215,6 +215,15 @@ section {
   margin: 0 5px;
   animation: animate 1.2s linear infinite; }
 
+.bot-submit__btn {
+  padding: 1rem 4rem !important;
+  grid-column: 1 /-1;
+  align-self: center;
+  justify-self: flex-end;
+  margin-top: 2rem;
+  background-image: linear-gradient(to right bottom, #fe7e4e, #e44002);
+  color: #fff; }
+
 @keyframes animate {
   50% {
     height: 20%; }
@@ -241,7 +250,6 @@ section {
   top: 50%;
   left: 40%;
   height: max-content;
-  width: max-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem; }
@@ -250,10 +258,9 @@ section {
   width: 100%;
   justify-self: center; }
   .optionBlock_checkBox:checked + .optionBlock_button {
-    background-color: #afd7f1;
-    box-shadow: 10px 10px 8px #888888; }
+    background-color: #788bff; }
   .optionBlock_button {
-    background-color: #bfd7ff;
+    background-color: #9bb1ff;
     padding: 3rem 3rem;
     border-radius: 1rem;
     text-align: center;
@@ -262,6 +269,7 @@ section {
     display: block;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     cursor: pointer;
+    transition: all 0.2s;
     font-weight: 500; }
 
 .btn {

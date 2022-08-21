@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 20rem 0;
+  padding: 15rem 0;
   position: relative;
   font-family: "Poppins", sans-serif;
 
@@ -69,6 +69,19 @@
   animation: animate 1.2s linear infinite;
 }
 
+.bot {
+  &-submit__btn {
+    padding: 1rem 4rem !important;
+    grid-column: 1 /-1;
+    align-self: center;
+    justify-self: flex-end;
+    margin-top: 2rem;
+
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    color: $color-white;
+  }
+}
+
 @keyframes animate {
   50% {
     height: 20%;
@@ -100,7 +113,6 @@
   left: 40%;
 
   height: max-content;
-  width: max-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;

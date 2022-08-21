@@ -2,12 +2,11 @@
   width: 100%;
   justify-self: center;
   &_checkBox:checked + .optionBlock_button {
-    background-color: rgb(175, 215, 241);
-    box-shadow: 10px 10px 8px #888888;
+    background-color: #788bff;
   }
 
   &_button {
-    background-color: #bfd7ff;
+    background-color: #9bb1ff;
     padding: 3rem 3rem;
     border-radius: 1rem;
     text-align: center;
@@ -16,6 +15,7 @@
     display: block;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     cursor: pointer;
+    transition: all 0.2s;
 
     font-weight: 500;
   }

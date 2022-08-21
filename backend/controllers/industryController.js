@@ -1,4 +1,4 @@
-const Industry = require('./../models/primary schema/industryModel');
+const Industry = require('./../models/industryModel');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
@@ -43,7 +43,7 @@ const s3 = new aws.S3({
 const upload = multer({
   storage: multerS3({
     s3,
-    bucket: 'ss-project',
+    bucket: 'ss-textract-async-process',
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
@@ -84,7 +84,7 @@ exports.createBasicForm = catchAsync(async (req, res, next) => {
 const Licupload = multer({
   storage: multerS3({
     s3,
-    bucket: 'ss-project',
+    bucket: 'ss-textract-async-process',
     metadata: (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
@@ -122,6 +122,10 @@ exports.createDetailForm = catchAsync(async (req, res, next) => {
     data: updatedIndustryDetailData,
   });
 });
+
+// expports.getBot = catchAsync(async (req, res, next) => {
+//   const bot = await
+// });
 
 exports.createIndustry = factory.createOne(Industry);
 

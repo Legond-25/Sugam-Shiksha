@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 // Configuring environment variables
@@ -9,17 +10,16 @@ dotenv.config({
 const app = require('./app');
 
 // DB Configuration
-const DB_PRIMARY = process.env.DB_PRIMARY;
-const DB_SECONDARY = process.env.DB_SECONDARY;
+const DB = process.env.DB;
 
-const config = {
-  dbConfig: {
-    db: DB_PRIMARY,
-    db_read: DB_SECONDARY,
-  },
-};
-
-require('./DB/index').createConnection(app, config);
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log('Database connected successfully');
+  });
 
 // PORT
 const port = process.env.PORT || 3000;

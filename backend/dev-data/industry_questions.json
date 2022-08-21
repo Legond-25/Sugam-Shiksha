@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb48638"
+  },
+  "que": "How well do the concepts below help in the development of one's technical skills?",
+  "options": [
+    "Excellent problem solving and analytical skills",
+    "Knowledge of operating systems concepts",
+    "Ability to code using  any programming language",
+    "Good understanding of data structures and algorithms",
+    "Knowledge of SQL and Databases",
+    "Good fundamental understanding of software engineering",
+    "Ability to communicate thoughts appropriately"
+  ]
+},{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb48639"
+  },
+  "que": "Rate the impact of the following",
+  "options": [
+    "Communication skills",
+    "Aptitude skills",
+    "Academic Performance",
+    "Internships and Sponsored projects"
+  ]
+},{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb4863a"
+  },
+  "que": "Is having a global certification in any specific domain beneficial for students?",
+  "options": [
+    "yes",
+    "no"
+  ]
+},{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb4863b"
+  },
+  "que": "What do you feel is the requirement of the industry in the present scenario?",
+  "options": [
+    "Excellent problem solving and analytical skills",
+    "Knowledge of operating systems concepts",
+    "Ability to code using  any programming language",
+    "Good understanding of data structures and algorithms",
+    "Knowledge of SQL and Databases",
+    "Good fundamental understanding of software engineering",
+    "Ability to communicate thoughts appropriately"
+  ]
+},{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb4863c"
+  },
+  "que": "Should freshers get industrial training before applying for jobs and interviews?",
+  "options": [
+    "yes",
+    "no"
+  ]
+},{
+  "_id": {
+    "$oid": "6301a9c1091eac281bb4863d"
+  },
+  "que": "Would your company offer students this kind of training?",
+  "options": [
+    "yes",
+    "no"
+  ]
+}]

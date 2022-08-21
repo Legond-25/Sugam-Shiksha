@@ -1,4 +1,4 @@
-const Institute = require('./../models/primary schema/instituteModel');
+const Institute = require('./../models/instituteModel');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');

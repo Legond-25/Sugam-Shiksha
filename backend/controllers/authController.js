@@ -6,12 +6,12 @@ const AppError = require('../utils/appError');
 const SendEmail = require('../utils/email');
 const crypto = require('crypto');
 
-const User = require('../models/primary schema/userModel');
-const Student = require('../models/primary schema/studentModel');
-const Institute = require('../models/primary schema/instituteModel');
-const University = require('../models/primary schema/universityModel');
-const Industry = require('../models/primary schema/industryModel');
-const Alumni = require('../models/primary schema/alumniModel');
+const User = require('../models/userModel');
+const Student = require('../models/studentModel');
+const Institute = require('../models/instituteModel');
+const University = require('../models/universityModel');
+const Industry = require('../models/industryModel');
+const Alumni = require('../models/alumniModel');
 
 // Email Secret
 const emailKey = process.env.EMAIL_SECRET_KEY;

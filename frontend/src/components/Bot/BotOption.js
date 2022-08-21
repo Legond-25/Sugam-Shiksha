@@ -4,11 +4,12 @@ const BotOptions = (props) => {
       <input
         type="checkbox"
         className="optionBlock_checkBox"
-        id="checkBox"
+        id={props.id}
         hidden
+        value={props.value}
       />
-      <label htmlFor="checkBox" className="optionBlock_button">
-        Computer Engineering
+      <label htmlFor={props.id} className="optionBlock_button">
+        {props.value}
       </label>
     </div>
   );
