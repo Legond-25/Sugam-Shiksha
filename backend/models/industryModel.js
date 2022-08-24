@@ -40,10 +40,11 @@ const industrySchema = mongoose.Schema(
       trim: true,
       // required: [true, 'Please provide your years of experience'],
     },
-    questions: [
+    bot: [
       {
         que: String,
         options: [String],
+        answer: [String],
       },
     ],
     formFilled: {
@@ -52,6 +53,10 @@ const industrySchema = mongoose.Schema(
         default: false,
       },
       detailed: {
+        type: Boolean,
+        default: false,
+      },
+      bot: {
         type: Boolean,
         default: false,
       },

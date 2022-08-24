@@ -10,6 +10,7 @@ import AlumniDashboard from './components/Dashboards/AlumniDashboard/AlumniDashb
 import IndustryDashboard from './components/Dashboards/IndustryDashboard/IndustryDashboard';
 import InstituteDashboard from './components/Dashboards/InstituteDashboard/InstituteDashboard';
 import LoginType from './components/Signup-Login/LoginType';
+import { UserContextProvider } from './store/user-context';
 
 function App() {
   return (
@@ -20,7 +21,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
-        <Route path="/university-dashboard" element={<UniversityDashboard />} />
+        <Route
+          path="/university-dashboard"
+          element={
+            <UserContextProvider>
+              <UniversityDashboard />
+            </UserContextProvider>
+          }
+        />
         <Route path="/alumni-dashboard" element={<AlumniDashboard />} />
         <Route path="/industry-dashboard" element={<IndustryDashboard />} />
         <Route path="/institute-dashboard" element={<InstituteDashboard />} />

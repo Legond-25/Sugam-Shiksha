@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import Sidebar from '../../Sidebar/Sidebar';
 import DashboardNavbar from '../../Header/DashboardNavbar';
 import UniBasicForm from './UniBasicForm';
 import UniDetailForm from './UniDetailForm';
-
 import { sendGetRequest } from '../../../utils/sendHttp';
+import UserContext from '../../../store/user-context';
 
 const position = {
   position: 'relative',
 };
 
 const UniversityDashboard = (props) => {
+  const userCtx = useContext(UserContext);
+
   const [universityId, setUniversityId] = useState('');
-  const [univName, setUniversityName] = useState('');
   const [formFilled, setFormFilled] = useState({
     basic: false,
     detailed: false,
@@ -34,7 +35,9 @@ const UniversityDashboard = (props) => {
     const res = await sendGetRequest('/api/v1/university/getUniOfUser');
 
     setUniversityId(res.data.data.data.id);
-    setUniversityName(res.data.data.data.universityName);
+
+    console.log(res.data.data.data.universityName);
+    userCtx.universityNameHandler(res.data.data.data.universityName);
     setFormFilled(res.data.data.data.formFilled);
   };
 
@@ -61,11 +64,7 @@ const UniversityDashboard = (props) => {
           <UniBasicForm id={universityId} setFormFilled={formFilledHandler} />
         )}
         {formFilled.basic && !formFilled.detailed && (
-          <UniDetailForm
-            id={universityId}
-            setFormFilled={formFilledHandler}
-            name={univName}
-          />
+          <UniDetailForm id={universityId} setFormFilled={formFilledHandler} />
         )}
       </div>
     </div>

@@ -67,6 +67,7 @@ const IndustryBasicForm = (props) => {
         props.setFormFilled({
           basic: true,
           detailed: false,
+          bot: false,
         });
       }
     } catch (err) {

@@ -1,10 +1,15 @@
+import { useContext } from 'react';
+
 import Modal from '../../UI/Modal/Modal';
 import Input from '../../UI/Input/Input';
 import { sendPatchRequest } from '../../../utils/sendHttp';
 import { showAlert } from '../../../utils/alerts';
 import { useState } from 'react';
+import UserContext from '../../../store/user-context';
 
 const DepartmentModal = (props) => {
+  const userCtx = useContext(UserContext);
+
   const [file_1, setFile_1] = useState(null);
   const [file_2, setFile_2] = useState(null);
   const [file_3, setFile_3] = useState(null);
@@ -17,25 +22,25 @@ const DepartmentModal = (props) => {
 
   const file1ChangeHandler = (event) => {
     setName_1(
-      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+      `${userCtx.universityName}-${event.target.previousSibling.children[0].innerHTML}`
     );
     setFile_1(event.target.files[0]);
   };
   const file2ChangeHandler = (event) => {
     setName_2(
-      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+      `${userCtx.universityName}-${event.target.previousSibling.children[0].innerHTML}`
     );
     setFile_2(event.target.files[0]);
   };
   const file3ChangeHandler = (event) => {
     setName_3(
-      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+      `${userCtx.universityName}-${event.target.previousSibling.children[0].innerHTML}`
     );
     setFile_3(event.target.files[0]);
   };
   const file4ChangeHandler = (event) => {
     setName_4(
-      `${props.universityName}-${event.target.previousSibling.children[0].innerHTML}`
+      `${userCtx.universityName}-${event.target.previousSibling.children[0].innerHTML}`
     );
     setFile_4(event.target.files[0]);
   };

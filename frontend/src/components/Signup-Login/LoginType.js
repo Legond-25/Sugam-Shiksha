@@ -183,6 +183,26 @@ const LoginType = (props) => {
             hidden
           />
         </div>
+
+        <div className="login-type__group login-type__group--6">
+          <label className="login-type__label" htmlFor="alumni">
+            <img
+              src={aicte}
+              alt="alumnni"
+              onMouseOver={changeToGifHandler}
+              onMouseOut={changeToImageHandler}
+              onClick={submitHandler}
+            />
+            <span onClick={submitHandler}>AICTE</span>
+          </label>
+          <input
+            className="login-type__input"
+            type="radio"
+            name="user_type"
+            id="aicte"
+            hidden
+          />
+        </div>
       </form>
     </div>
   );

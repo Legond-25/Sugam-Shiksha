@@ -77,6 +77,7 @@ const IndustryDetailForm = (props) => {
         props.setFormFilled({
           basic: true,
           detailed: true,
+          bot: false,
         });
       }
     } catch (err) {

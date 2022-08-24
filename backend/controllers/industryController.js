@@ -1,4 +1,5 @@
 const Industry = require('./../models/industryModel');
+const IndustryQuestionModel = require('./../models/industryQuestionModel');
 const AppError = require('./../utils/appError');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
@@ -123,8 +124,25 @@ exports.createDetailForm = catchAsync(async (req, res, next) => {
   });
 });
 
-// expports.getBot = catchAsync(async (req, res, next) => {
-//   const bot = await
+exports.getBot = catchAsync(async (req, res, next) => {
+  const bot = await IndustryQuestionModel.find();
+
+  if (!bot) {
+    return next(new AppError('An error ocurred while getting the bot', 400));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    data: bot,
+  });
+});
+
+// exports.getBotAnswers = catchAsync(async (req, res, next) => {
+//   const industryAdmin = req.params.id;
+
+//   const data = req.body;
+
+//   const industry = await Industry.findByIdAndUpdate(industryAdmin);
 // });
 
 exports.createIndustry = factory.createOne(Industry);
